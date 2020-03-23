@@ -1,0 +1,48 @@
+main C0
+
+class C0 is_a PN
+	object
+        trans t4
+            precond p4((x, #fail))
+            postcond p3(x)
+        trans t1
+            precond p1(#e)
+            action {o := C1 new.}
+            postcond p2(o)
+        trans t3
+            cond p2(o)
+            guard {o state: x. x >= 3}
+            action {o reset: l.}
+            postcond p2(l)
+        place p1(#e)
+        place p2()
+        place p4()
+        place p3(1, 2)
+
+class C1 is_a PN
+    object
+        place p(0)
+        place pchild()
+        trans t
+            precond p(x)
+            action {y := x + 1.}
+            postcond p(y)
+    method waitFor: x
+        place return()
+        place x()
+        trans t1
+            cond p(y)
+            precond x(x)
+            guard {x < y}
+            postcond return(#fail)
+        trans t2
+            precond x(x), p(x)
+            postcond return(#success), p(0)
+    method reset: o
+        place return()
+        trans t
+            precond p(x)
+            action {o := C1 new.}
+            postcond return(#e), p(0), pchild(o)
+    sync state: x
+        cond p(x)

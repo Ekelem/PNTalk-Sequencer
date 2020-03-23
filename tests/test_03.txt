@@ -1,0 +1,49 @@
+main C0
+
+class C0 is_a PN
+	object
+        trans t4
+            precond p4((x, #fail))
+            postcond p3(x)
+        trans t1
+            precond p1(#e)
+            action {o := C1 new.}
+            postcond p2(o)
+        trans t3
+            cond p2(o)
+            action {o reset.}
+        place p1(#e)
+        place p2()
+        place p4()
+        place p3(1, 2)
+
+class C1 is_a PN
+    object
+        place p1(#e)
+        place p2()
+        place p4()
+        place p3(1, 2)
+
+        trans t1
+            precond p1(#e)
+            action {o := C2 new.}
+            postcond p2(o)
+    method reset
+        place return()
+        trans t
+            cond p2(o)
+            action {o reset.}
+            postcond return(#e)
+
+class C2 is_a PN
+    object
+        place p(0)
+        trans t
+            precond p(x)
+            action {y := x + 1.}
+            postcond p(y)
+    method reset
+        place return()
+        trans t
+            precond p(x)
+            postcond return(#e), p(0)
