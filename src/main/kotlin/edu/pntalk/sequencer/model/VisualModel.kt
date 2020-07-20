@@ -1,13 +1,30 @@
 package edu.pntalk.sequencer.model
 
-import edu.pntalk.sequencer.main
+import edu.pntalk.sequencer.view.ErrorFragment
+import edu.pntalk.sequencer.view.MainView
 import javafx.application.Platform
 import javafx.event.EventHandler
 import javafx.geometry.Point2D
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
-import javafx.util.Duration
-import tornadofx.*
+import org.apache.batik.dom.GenericDOMImplementation
+import org.apache.batik.svggen.SVGGraphics2D
+import org.fxmisc.richtext.CodeArea
+import tornadofx.addChildIfPossible
+import tornadofx.clear
+import java.io.OutputStreamWriter
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+import kotlin.collections.List
+import kotlin.collections.count
+import kotlin.collections.iterator
+import kotlin.collections.set
+import kotlin.collections.withIndex
+
+import org.w3c.dom.Document;
+import java.awt.BasicStroke
+import java.awt.Shape
+import java.awt.Stroke
 
 
 class VisualModel (main: Pane, input: Pane, floatingX: Pane, floatingY: Pane) {
@@ -19,6 +36,7 @@ class VisualModel (main: Pane, input: Pane, floatingX: Pane, floatingY: Pane) {
     val mainPane = main
     val floatingXPane = floatingX
     val floatingYPane = floatingY
+    lateinit var supervisor : MainView
 
     var dragStart: Point2D = Point2D(0.0, 0.0)
     var dragRoot: Point2D = Point2D(0.0, 0.0)
@@ -41,8 +59,12 @@ class VisualModel (main: Pane, input: Pane, floatingX: Pane, floatingY: Pane) {
         }
     }
 
+    fun errorMessage(errorCode: Int, errorMessage: String) {
+        ErrorFragment(errorCode, errorMessage).openWindow()
+    }
 
-    fun draw(backend: Archive) {
+
+    /*fun draw(backend: Archive) {
         instances.clear()
         messages.clear()
         responses.clear()
@@ -99,28 +121,42 @@ class VisualModel (main: Pane, input: Pane, floatingX: Pane, floatingY: Pane) {
             }
         }
 
+    }*/
+
+    fun exportSVG() {
+        val domImpl = GenericDOMImplementation.getDOMImplementation()
+        // Create an instance of org.w3c.dom.Document.
+        val svgNS = "http://www.w3.org/2000/svg"
+        val document: Document = domImpl.createDocument(svgNS, "svg", null)
+
+        val svgGenerator = SVGGraphics2D(document)
+        svgGenerator.stroke = BasicStroke(0.3F)
+        svgGenerator.drawLine(0, 1, 8, 1)
+
+        val useCSS = true // we want to use CSS style attributes
+        svgGenerator.stream("export.svg", useCSS)
     }
 
-    fun createObject(name: String, classname: String, creation : Double) {
-        val visual = PNObject(name, classname,instances.count()*(PNConfiguration.instanceSpace + PNConfiguration.instanceSize.x) + PNConfiguration.offset.x,creation)
+    /*fun createObject(name: String, classname: String, creation : Double) {
+        val visual = PNObject(name, classname,instances.count()*(PNConfiguration.instanceSpace + PNConfiguration.instanceSize.x) + PNConfiguration.offset.x,creation, )
         instances[name] = visual
-    }
+    }*/
 
-    fun createMessage(id: Int, messageName: String, caller: String, receiver: String, time: Double) {
+    /*fun createMessage(id: Int, messageName: String, caller: String, receiver: String, time: Double) {
         instances[caller]?.let { from -> instances[receiver]?.let { to ->
-            messages[id] = (PNConnection(messageName, from,to, time)) } }
+            messages[id] = (PNConnection(messageName, from,to, time, this)) } }
     }
 
     fun createMessage(respondTo: Int, time: Double) {
         messages[respondTo]?.let { original ->
             responses.add(PNConnection("Response to ${original.messageName.text}", original.receiver, original.caller, time, true))
         }
-    }
+    }*/
 
-    private fun createMain(initial: List<ArchiveInitial>) {
+    /*private fun createMain(initial: List<ArchiveInitial>) {
         for (starter in initial) {
             createObject(starter.instance, starter.cls, 0.0)
             //TODO: places
         }
-    }
+    }*/
 }

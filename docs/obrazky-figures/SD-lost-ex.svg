@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   version="1.1"
+   width="714"
+   height="614"
+   id="svg1308"
+   sodipodi:docname="SD-lost-ex.svg">
+  <metadata
+     id="metadata1312">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     inkscape:current-layer="svg1308"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-9"
+     inkscape:window-x="-9"
+     inkscape:cy="164.50392"
+     inkscape:cx="278.95542"
+     inkscape:zoom="1.3517915"
+     showgrid="false"
+     id="namedview1310"
+     inkscape:window-height="1001"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs992">
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.7"
+       id="rect1875-3"
+       width="71.736328"
+       height="39"
+       x="263.21927"
+       y="47.219276" />
+    <rect
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.7"
+       id="rect1875-6"
+       width="71.736328"
+       height="39"
+       x="263.21927"
+       y="47.219276" />
+  </defs>
+  <rect
+     y="47.219276"
+     x="263.21927"
+     height="39"
+     width="71.736328"
+     id="rect1875"
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.7;" />
+  <path
+     sodipodi:nodetypes="cc"
+     id="path1877"
+     d="m 299.71928,87.219277 0,110.681933"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1" />
+  <rect
+     y="119.21928"
+     x="292.21927"
+     height="28"
+     width="13"
+     id="rect1879"
+     style="fill:#ffffff;stroke:#000000;stroke-width:0.7" />
+  <text
+     id="text1988"
+     y="71.414841"
+     x="288.48792"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+       id="tspan1986">self</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;fill:#000000;fill-opacity:1;stroke:none"
+     x="318.21231"
+     y="133.96664"
+     id="text1988-9"><tspan
+       id="tspan1986-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">lostMessage</tspan></text>
+  <path
+     id="path971"
+     d="m 305.21927,147.21927 h 46 l -10.16267,4.20952 v -8.41904 l 10.16267,3.70952"
+     style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  <ellipse
+     cx="358.42889"
+     cy="146.7506"
+     rx="7.2096405"
+     ry="7.1240964"
+     id="path973"
+     style="fill:#000000;stroke:#000000;stroke-width:0.7" />
+</svg>

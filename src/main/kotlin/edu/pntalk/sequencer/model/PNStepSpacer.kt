@@ -6,7 +6,7 @@ import javafx.scene.text.Text
 import tornadofx.*
 
 
-class PNStepSpacer(id : Int, time : Double) {
+class PNStepSpacer(val id : Int, val time : Double) {
     val root : Group = Group()
     val spacer : Line = Line(0.0, 60.0 + time, 50000.0, 60.0 + time)
     val upperLabel : PNLabel = PNLabel(10.0, 58.0 + time, "step $id")

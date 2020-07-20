@@ -1,27 +1,44 @@
 package edu.pntalk.sequencer.model
 
+import com.google.rpc.Code
+import io.grpc.ManagedChannelBuilder
 import javafx.application.Platform
 import javafx.beans.property.*
 import javafx.beans.value.ObservableValue
-import javafx.geometry.Pos
-import javafx.scene.Node
+import javafx.concurrent.Task
 import javafx.scene.layout.Pane
-import javafx.scene.shape.Circle
 import javafx.scene.transform.Scale
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.asExecutor
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
+import org.fxmisc.richtext.CodeArea
+import org.fxmisc.richtext.LineNumberFactory
+import org.fxmisc.richtext.model.StyleSpans
+import org.fxmisc.richtext.model.StyleSpansBuilder
+import org.reactfx.util.Try
 import tornadofx.*
-import java.awt.event.MouseEvent
+import virtualmachine.Simulate
 import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import java.io.File
+import java.io.IOException
+import java.time.Duration
+import java.util.*
+import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import java.util.function.Consumer
+import java.util.function.Supplier
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 @Serializable
 data class ArchiveMessage (val id: Int = 0, val message_name: String = "", val caller_instance: String = "", val caller_class: String = "",
-                            val receiver_instance: String = "", val receiver_class: String = "", val respond_to: Int = 0)
+                            val receiver_instance: String = "", val receiver_class: String = "", val transition: String = "" ,val respond_to: Int = 0, val response:List<String> = listOf())
 
 @Serializable
 data class ArchiveTransStart (val transition_name: String = "", val instance: String = "", val instance_class: String= "", val id: Int= 0)
@@ -36,23 +53,12 @@ data class ArchiveValue (val type: Int= 0, val value: String)
 data class ArchiveStep (val messages: List<ArchiveMessage>, val  transition_starts: List<ArchiveTransStart>, val transition_ends: List<ArchiveTransEnd>)
 
 @Serializable
-data class ArchiveInitial (val instance: String = "main", val cls: String, val places: List<Map<String, List<ArchiveValue>>>)
+data class ArchiveInitial (val instance: String = "main", val cls: String, val creation: Int = 0, val places: List<Map<String, List<ArchiveValue>>>)
 
 @Serializable
-data class Archive (val steps: List<ArchiveStep>, val initial: List<ArchiveInitial>)
+data class Archive (val steps: List<ArchiveStep> = listOf(), val initial: List<ArchiveInitial> = listOf())
 
-class Place(name : String, type : Int, value : String) {
-    val nameProperty = SimpleStringProperty(name)
-    var name by nameProperty
-
-    val typeProperty = SimpleIntegerProperty(type)
-    var type by typeProperty
-
-    val valueProperty = SimpleStringProperty(value)
-    var value by valueProperty
-}
-
-class ZoomingPane : Pane() {
+class ZoomingPane2 : Pane() {
     private val zoomFactor: DoubleProperty = SimpleDoubleProperty(1.0)
     /*override fun layoutChildren() {
         val pos = Pos.TOP_LEFT
@@ -100,13 +106,18 @@ class ZoomingPane : Pane() {
     }
 }
 
-class MainModel : ViewModel() {
+/*class MainModel : ViewModel() {
 
     val file = File("code.txt")
     val output = File("output.btw")
     val sfile = File("scenario.yaml")
+    var grpcClient = GrpcClient(ManagedChannelBuilder.forAddress("localhost", 51898)
+            .usePlaintext()
+            .executor(Dispatchers.Default.asExecutor())
+            .build())
     val seqDiag : Pane = Pane()
     val input : ZoomingPane = ZoomingPane()
+    val codeArea = CodeArea()
     val floatingY : Pane = Pane()
     val floatingX : Pane = Pane()
     val code = SimpleStringProperty("Code")
@@ -120,13 +131,18 @@ class MainModel : ViewModel() {
     var validCode : Boolean = false
 
     val frontend : VisualModel = VisualModel(seqDiag, input, floatingX, floatingY)
+    var backend : Archive? = null
 
     init {
+        importStylesheet("/syntax-highlight.css")
         input.setPrefSize(500.0, 600.0)
         input.addChildIfPossible(seqDiag)
         input.addChildIfPossible(floatingX)
         input.addChildIfPossible(floatingY)
+        codeArea.paragraphGraphicFactory = LineNumberFactory.get(codeArea)
+        codeArea.setPrefSize(500.0, 600.0)
         parse() //Mock
+        codeArea.replaceText(0, 0, code.get())
         seqDiag.setMinSize(30000.0, 30000.0)
         seqDiag.style = "-fx-background-color: #D3D3D333,\n" +
                 "linear-gradient(from 0.5px 0px to 10.5px 0px, repeat, LightGray 5%, transparent 5%),\n" +
@@ -151,19 +167,53 @@ class MainModel : ViewModel() {
         }
         else
             print(proc.inputStream.bufferedReader().readText())
-            return false
+        return false
     }
 
     @UnstableDefault
-    fun simulate(steps : Int) {
+    fun simulate() = runBlocking {
+
+        if (PNConfiguration.validLocal())
+        {
+
+        }
+        else {
+            try {
+                val reply: Simulate.SimulateReply = grpcClient.simulate(code.value, steps.toLong())
+                if (reply.status != Code.OK_VALUE.toLong()) {
+                    Platform.runLater(Runnable {
+                        frontend.errorMessage(Code.INVALID_ARGUMENT_VALUE, reply.result)
+                    })
+                    return@runBlocking
+                }
+                val json = Json(JsonConfiguration.Stable)
+                val archive = json.parse(Archive.serializer(), reply.result)
+                print(archive.initial[0].cls)
+                frontend.draw(archive)
+                return@runBlocking
+
+
+            } catch (e : io.grpc.StatusException) {
+                Platform.runLater(Runnable {
+                    frontend.errorMessage(Code.UNAVAILABLE_VALUE, "Service unavailable")
+                })
+                return@runBlocking
+            }
+        }
         completion.set(0.1)
         Platform.runLater {
             progressComment.set("Verifying PNTalk code")
         }
-        if (!verify()) {
-            print("translator Error")
-            return
+        try {
+            if (!verify()) {
+                print("translator Error")
+                return@runBlocking
+            }
         }
+        catch (e: IOException) {
+            print(e)
+        }
+
         completion.set(0.6)
         Platform.runLater {
             progressComment.set("Computing Simulation steps..")
@@ -267,4 +317,4 @@ class MainModel : ViewModel() {
     }
 
 
-}
+}*/

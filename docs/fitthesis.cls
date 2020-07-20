@@ -63,8 +63,11 @@
 \ifenglish
   \PassOptionsToPackage{main=english}{babel}
 \fi
+
+\usepackage{svg}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage[czech,slovak,english]{babel}
 \usepackage[utf8]{inputenc} %kodovani / encoding
 \usepackage{cmap}
@@ -74,6 +77,12 @@
 \usepackage{color}
 \usepackage{etoolbox}
 \usepackage{enumitem}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{csquotes}
+\usepackage{lipsum}
+\usepackage{tabularx}
 
 \ifczech
   \main@language{czech}

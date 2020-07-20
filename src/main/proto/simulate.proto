@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package virtualmachine;
+
+service Simulator {
+  rpc simulate (SimulateRequest) returns (SimulateReply) {}
+}
+
+message SimulateRequest {
+  string code = 1;
+  string scenario = 2;
+  int64 steps = 3;
+}
+
+message SimulateReply {
+  int64 status = 1;
+  string result = 2;
+}

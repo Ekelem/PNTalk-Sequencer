@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package translator;
+
+service Translator {
+  // Sends a greeting
+  rpc Translate (TranslateRequest) returns (TranslateReply) {}
+}
+
+message TranslateRequest {
+  string code = 1;
+}
+
+// The response message containing the greetings
+message TranslateReply {
+  int64 status = 1;
+  string code = 2;
+}
