@@ -51,6 +51,7 @@ Všetky fyzické osoby ovplyvňujúce vývoj softvéru môžme pre akýkoľvek s
 Okrem Účastníkov vývoja majú na systém vplyv ešte aspekty businessu a technológie dostupné v dobe vývoja. Business pokrýva hlavne požiadavky obchodu spojené s legislatívou. Technológie nás obmedzujú pri nedostupnosti tak pokročilých technológií aké by sme potrebovali pre svoj systém alebo naopak nové prielomy v technológii poskytujú príležitosť pozdvihnnúť projekt na vyššiu úroveň.
 
 \subsection{Procces vývoja}
+\label{proces_vyvoja}
 
 Je zrejmé že väčšina organizácií bude mať vlastný formálne definovaný proces vývoja softvéru alebo sadu krokov, ktoré podľa ktorých by sa mal systém vyvíjať. Akiste sa budú tieto metodológie od seba diametrálne odlišovať pre jednotlivé organizácie. Avšak, všetky metódy riešenia problému môžeme zavšeobecniť na kroky, ktoré sú spoločné: \\
 
@@ -116,6 +117,22 @@ Na obrázku \ref{fig:system-inputs} je na pravej strane zobrazený pohľad proce
 \end{table}
 
 \section{Analýza systému}
+ V sekcii \ref{proces_vyvoja} sme zaradili analýzu systému na svoje miesto v procese vývoja za fázu zahájenia projektu a pred fázu návrhu systému. Z toho vyplýva, že analýza je prerekvizita k úspešnému návrhu systému. Keďže sa v literatúre nestretneme s presne vytíčenou hranicou, kde končí analýza systému a začína návrh systému, v tejto práci bude analýza pokrývať potreby majiteľov a uživateľov systému. Technické a implementačné detaily nebudeme v tejto práci uvažovať ako súčast analýzy. V predchádzajúcej sekcii bola opísaná zúčastnená strana podieľajúca sa na analýze a cieľe analýzy, no samotná otázka "ako analyzovať systém" bola doteraz len nonšalantne opomíjaná. V tejto kapitole budú rozobrané vybrané metodológie a prístupy, ktoré obšírny pojem analýza systému zastrešuje.
+ 
+ \subsection{Prístupy k analýze systému}
+Analýza je hlavne o riešení problému, a keďže riešiť problém sa dá viacerími prístupmi, asi nikoho neprekvapí, že aj prístupov k analýze systému bude viac.
+
+\subsubsection{Modelom riadená analýza}
+Či sa jedná o štruktúrovanú analýzu, informačné inžinierstvo alebo objektovo-orientovanú analýzu, všetky tri príklady patria do skupiny modelom riadených analýz. Tento prístup používa na vyjadrovanie všetkým zrozumiteľné obrázky na opis problémov, požiadavkov a riešení v systéme. Takou grafickou reprezentáciou môžu byť napríklad vývojové diagramy, štrukturované grafy a iné schémy.
+
+\begin{enumerate}
+	\item \textbf{Štruktúrnej analýza}, ako jedna z tradičných foriem analýzy zo 70. rokov používaná do dnes je zameraná na tok dát a analyzuje systém z pohľadu procesov. :TODO: obr dataflow
+	\item \textbf{Informačné inžinierstvo} ako ďaľší tradičný prístup narozdiel od sledovania dát v procese, sleduje štruktúru uloženia dát naprieč systémom.
+	\item \textbf{Objektovo-orientovaný prístup}
+\end{enumerate}
+ 
+  
+
 
 \section{Modelovanie systému}
 
