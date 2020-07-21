@@ -249,59 +249,66 @@ class CodeController: Controller() {
 
     fun highlightConnection(message : String, receiver: String, caller: String) {
         if (message == "<<create>>") {
-            val result = codeLabels.getCreateCodeRange(caller, receiver)
-            if (result != null) {
-                project.selectFile(result.file)
-                var range : IntRange = result.range
-                var line : Int = result.line
+            try {
+                val result = codeLabels.getCreateCodeRange(caller, receiver)
+                if (result != null) {
+                    project.selectFile(result.file)
+                    var range : IntRange = result.range
+                    var line : Int = result.line
 
-                val pattern = computeClassPattern(receiver)
-                val matcher = pattern.matcher(codeArea.text.subSequence(range.first, range.last + 1))
-                val spansBuilder = StyleSpansBuilder<Collection<String>>()
-                var lastKwEnd = 0
-                while (matcher.find()) {
-                    val style = PNConfiguration.highlightClass.findLast { matcher.group(it) != null }?.toLowerCase()?.plus("-highlight").orEmpty()
-                    spansBuilder.add(Collections.singleton("highlight"), matcher.start() - lastKwEnd)
-                    spansBuilder.add(Collections.singleton(style), matcher.end() - matcher.start())
-                    lastKwEnd = matcher.end()
+                    val pattern = computeClassPattern(receiver)
+                    val matcher = pattern.matcher(codeArea.text.subSequence(range.first, range.last + 1))
+                    val spansBuilder = StyleSpansBuilder<Collection<String>>()
+                    var lastKwEnd = 0
+                    while (matcher.find()) {
+                        val style = PNConfiguration.highlightClass.findLast { matcher.group(it) != null }?.toLowerCase()?.plus("-highlight").orEmpty()
+                        spansBuilder.add(Collections.singleton("highlight"), matcher.start() - lastKwEnd)
+                        spansBuilder.add(Collections.singleton(style), matcher.end() - matcher.start())
+                        lastKwEnd = matcher.end()
+                    }
+
+                    codeArea.setStyleSpans(range.first, spansBuilder.create())
+                    codeArea.showParagraphAtTop(line)
                 }
-
-                codeArea.setStyleSpans(range.first, spansBuilder.create())
-                codeArea.showParagraphAtTop(line)
+            }
+            catch (e:StringIndexOutOfBoundsException) {
+                // not exists anymore, do nothing
             }
         }
         else {
-            var methodName = message
-            var clsName = receiver
-            val responseRegex = "Response to (\\w+)".toRegex()
-            if (responseRegex.containsMatchIn(message)) {
-                println(responseRegex.find(message)!!.groups[1]!!.value)
-                methodName = responseRegex.find(message)!!.groups[1]!!.value
-                clsName = caller
-            }
-            val result = codeLabels.getMessageCodeRange(methodName, clsName)
-            if (result != null) {
-                project.selectFile(result.file)
-                var range : IntRange = result.range
-                var line : Int = result.line
-
-                val pattern = computeClassPattern(receiver)
-                val matcher = pattern.matcher(codeArea.text.subSequence(range.first, range.last + 1))
-                val spansBuilder = StyleSpansBuilder<Collection<String>>()
-                var lastKwEnd = 0
-                while (matcher.find()) {
-                    val style = PNConfiguration.highlightClass.findLast { matcher.group(it) != null }?.toLowerCase()?.plus("-highlight").orEmpty()
-                    spansBuilder.add(Collections.singleton("highlight"), matcher.start() - lastKwEnd)
-                    spansBuilder.add(Collections.singleton(style), matcher.end() - matcher.start())
-                    lastKwEnd = matcher.end()
+            try {
+                var methodName = message
+                var clsName = receiver
+                val responseRegex = "Response to (\\w+)".toRegex()
+                if (responseRegex.containsMatchIn(message)) {
+                    println(responseRegex.find(message)!!.groups[1]!!.value)
+                    methodName = responseRegex.find(message)!!.groups[1]!!.value
+                    clsName = caller
                 }
+                val result = codeLabels.getMessageCodeRange(methodName, clsName)
+                if (result != null) {
+                    project.selectFile(result.file)
+                    var range : IntRange = result.range
+                    var line : Int = result.line
 
-                codeArea.setStyleSpans(range.first, spansBuilder.create())
-                codeArea.showParagraphAtTop(line)
+                    val pattern = computeClassPattern(receiver)
+                    val matcher = pattern.matcher(codeArea.text.subSequence(range.first, range.last + 1))
+                    val spansBuilder = StyleSpansBuilder<Collection<String>>()
+                    var lastKwEnd = 0
+                    while (matcher.find()) {
+                        val style = PNConfiguration.highlightClass.findLast { matcher.group(it) != null }?.toLowerCase()?.plus("-highlight").orEmpty()
+                        spansBuilder.add(Collections.singleton("highlight"), matcher.start() - lastKwEnd)
+                        spansBuilder.add(Collections.singleton(style), matcher.end() - matcher.start())
+                        lastKwEnd = matcher.end()
+                    }
+
+                    codeArea.setStyleSpans(range.first, spansBuilder.create())
+                    codeArea.showParagraphAtTop(line)
+                }
             }
-            else
-                println("null")
-
+            catch (e:StringIndexOutOfBoundsException) {
+                // not exists anymore, do nothing
+            }
         }
     }
 
@@ -310,20 +317,25 @@ class CodeController: Controller() {
         val result = codeLabels.getClassCodeRange(name)
         if (result != null)
         {
-            project.selectFile(result.file)
-            val pattern = computeClassPattern(name)
-            val matcher = pattern.matcher(codeArea.text.subSequence(result.range.first, result.range.last))
-            val spansBuilder = StyleSpansBuilder<Collection<String>>()
-            var lastKwEnd = 0
-            while (matcher.find()) {
-                val style = PNConfiguration.highlightClass.findLast { matcher.group(it) != null }?.toLowerCase()?.plus("-highlight").orEmpty()
-                spansBuilder.add(Collections.singleton("highlight"), matcher.start() - lastKwEnd)
-                spansBuilder.add(Collections.singleton(style), matcher.end() - matcher.start())
-                lastKwEnd = matcher.end()
-            }
+            try {
+                project.selectFile(result.file)
+                val pattern = computeClassPattern(name)
+                val matcher = pattern.matcher(codeArea.text.subSequence(result.range.first, result.range.last))
+                val spansBuilder = StyleSpansBuilder<Collection<String>>()
+                var lastKwEnd = 0
+                while (matcher.find()) {
+                    val style = PNConfiguration.highlightClass.findLast { matcher.group(it) != null }?.toLowerCase()?.plus("-highlight").orEmpty()
+                    spansBuilder.add(Collections.singleton("highlight"), matcher.start() - lastKwEnd)
+                    spansBuilder.add(Collections.singleton(style), matcher.end() - matcher.start())
+                    lastKwEnd = matcher.end()
+                }
 
-            codeArea.setStyleSpans(result.range.first, spansBuilder.create())
-            codeArea.showParagraphAtTop(result.line)
+                codeArea.setStyleSpans(result.range.first, spansBuilder.create())
+                codeArea.showParagraphAtTop(result.line)
+            }
+            catch (e:StringIndexOutOfBoundsException) {
+                // not exists, do nothing
+            }
         }
     }
 
