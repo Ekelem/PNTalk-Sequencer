@@ -524,11 +524,16 @@ class CodeController: Controller() {
             var border = 0
             val spansBuilder = StyleSpansBuilder<Collection<String>>()
             for (cls in it.classes) {
-                var matcher = globalPattern.matcher(text.subSequence(border, cls.value.range.first))
-                border = matchCodeArea(matcher, border, PNConfiguration.highlightGlobal, spansBuilder)
-                val localPattern = computeClassPattern(cls.key)
-                matcher = localPattern.matcher(text.subSequence(border, cls.value.range.last - 1))
-                border = matchCodeArea(matcher, border, PNConfiguration.highlightClass, spansBuilder)
+                try {
+                    var matcher = globalPattern.matcher(text.subSequence(border, cls.value.range.first))
+                    border = matchCodeArea(matcher, border, PNConfiguration.highlightGlobal, spansBuilder)
+                    val localPattern = computeClassPattern(cls.key)
+                    matcher = localPattern.matcher(text.subSequence(border, cls.value.range.last - 1))
+                    border = matchCodeArea(matcher, border, PNConfiguration.highlightClass, spansBuilder)
+                }
+                catch (e: StringIndexOutOfBoundsException) {
+                    // not exists anymore, Do nothing
+                }
             }
             spansBuilder.add(Collections.emptyList(), text.length - border)
             return spansBuilder.create()
