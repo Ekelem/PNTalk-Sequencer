@@ -1,11 +1,14 @@
 package edu.pntalk.sequencer.model
 
+import io.grpc.ManagedChannelBuilder
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleListProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Point2D
 import javafx.scene.effect.BlurType
 import javafx.scene.effect.DropShadow
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.asExecutor
 import tornadofx.observableList
 import tornadofx.onChange
 import java.awt.BasicStroke
@@ -26,6 +29,7 @@ object PNConfiguration {
     private var color = Color.BLACK
     val networkSimulatorHost = SimpleStringProperty("localhost")
     val networkSimulatorPort = SimpleIntegerProperty(51898)
+    var grpcClient : GrpcClient? = null
     var localTranslate = false
     var localVM = false
     var lTranslator = File("Translator.exe")
@@ -36,16 +40,30 @@ object PNConfiguration {
     val highlightClass = SimpleListProperty(observableList("KEYWORD", "CLS", "TRANS", "PLACE", "METHOD", "SYNC", "PAREN", "BRACKET", "BRACE"))
     val highlightShadow = DropShadow()
 
+    fun changeGrpcAddress() {
+        if (grpcClient != null) {
+            grpcClient!!.close()
+            grpcClient = null
+        }
+
+        grpcClient = GrpcClient(ManagedChannelBuilder.forAddress(networkSimulatorHost.value, networkSimulatorPort.value)
+                .usePlaintext()
+                .executor(Dispatchers.Default.asExecutor())
+                .build())
+    }
+
     init {
         networkSimulatorHost.onChange {
-            op -> println(op)
+            changeGrpcAddress()
+        }
+        networkSimulatorPort.onChange {
+            changeGrpcAddress()
         }
         highlightShadow.blurType = BlurType.GAUSSIAN
         highlightShadow.color = javafx.scene.paint.Color.GREEN
         highlightShadow.height = 15.0
         highlightShadow.width = 15.0
         highlightShadow.radius = 15.0
-        networkSimulatorHost.set("localhost")
     }
 
     fun setOffsetX(x: Double) {
