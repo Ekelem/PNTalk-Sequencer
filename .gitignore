@@ -1,0 +1,6 @@
+.idea
+sequencer-maven-project.iml
+docs/*.aux
+docs/*.out
+docs/*.ptc
+/target
