@@ -1,6 +1,48 @@
 \makeatletter
 \makeatother
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{deitel2008ajax}
+
+
+\bibitem{docker_docs}
+{\em {\it Docker Docs}}.
+\newblock {\small [Online; navštívené 20.7.2020]}.
+\newblock Dostupn{\'{e}} z: ~{\small\url{https://docs.docker.com/compose/}}.
+
+\bibitem{githubstats}
+{\em {Github Language Stats} 2020, second quarter}
+  [\url{https://madnight.github.io/githut/#/pull_requests/2020/2}].
+\newblock {\small Accessed: 2020-07-30}.
+
+\bibitem{githuboctoverse}
+{\em {Github Octoverse report} Over the past year}
+  [\url{https://octoverse.github.com/}].
+\newblock {\small Accessed: 2020-07-30}.
+
+\bibitem{tornadofx}
+{\em {TornadoFX Guide} gitbook}
+  [\url{https://edvin.gitbooks.io/tornadofx-guide/}].
+\newblock {\small Accessed: 2020-07-30}.
+
+\bibitem{anderson2009essential}
+{\sc\bgroup}Anderson{\egroup}, G.
+\newblock {\em Essential JavaFX}.
+\newblock Upper Saddle River, NJ: Prentice Hall, 2009.
+\newblock ISBN 978-0137042791.
+
+\bibitem{scenarios}
+{\sc\bgroup}Arms{\egroup}, W.~Y.
+\newblock {\em {Scenarios and Use cases} 2020, second quarter} [[online]].
+\newblock Cornell University, Naposledy navštíveno 20. 7. 2020.
+\newblock Dostupn{\'{e}} z:
+  ~{\small\url{https://www.cs.cornell.edu/courses/cs5150/2018sp/slides/7-use-cases.pdf}}.
+
+\bibitem{dea2011javafx}
+{\sc\bgroup}Dea{\egroup}, C.
+\newblock {\em JavaFX 2.0 : introduction by example}.
+\newblock New York: Apress, 2011.
+\newblock ISBN 978-1-4302-4257-4.
 
 \bibitem{Analysis2012}
 {\sc\bgroup}DENNIS{\egroup}, A., {\sc\bgroup}WIXOM{\egroup}, B.~H.
@@ -9,12 +51,38 @@
 \newblock John Wiley \& Sons, 2012.
 \newblock ISBN 978-1-118-05762-9.
 
-\bibitem{ovilex_ds2016}
-{\sc\bgroup}{Ovilex Software}{\egroup}.
-\newblock {\em {\it Driving School 2016}}.
-\newblock {\small [Online; navštíveno 11.12.2018]}.
-\newblock Dostupn{\'{e}} z:
-  ~{\small\url{http://www.ovilex.com/app/driving-school-2016/}}.
+\bibitem{hamilton2006learning}
+{\sc\bgroup}Hamilton{\egroup}, K.
+\newblock {\em Learning UML 2.0}.
+\newblock Sebastopol, Calif: O'Reilly, 2006.
+\newblock ISBN 9780596009823.
+
+\bibitem{kane2018docker}
+{\sc\bgroup}Kane{\egroup}, S.
+\newblock {\em Docker: up \& running: shipping reliable containers in
+  production}.
+\newblock Sebastopol, CA: O'Reilly Media, 2018.
+\newblock ISBN 9781492036739.
+
+\bibitem{kuruppu2019grpc}
+{\sc\bgroup}KURUPPU{\egroup}, D.
+\newblock {\em GRPC : up and running}.
+\newblock Place of publication not identified: O'REILLY MEDIA, INC, USA, 2019.
+\newblock ISBN 978-1492058335.
+
+\bibitem{wasson2006system}
+{\sc\bgroup}Wasson{\egroup}, C.
+\newblock {\em System analysis, design, and development : concepts, principles,
+  and practices}.
+\newblock Hoboken, N.J: Wiley-Interscience, 2006.
+\newblock ISBN 978-0471393337.
+
+\bibitem{weaver2007javafx}
+{\sc\bgroup}Weaver{\egroup}, J.
+\newblock {\em JavaFX Script : dynamic Java scripting for rich
+  Internet/client-side applications}.
+\newblock Berkeley Calif: Apress, 2007.
+\newblock ISBN 9781590599457.
 
 \bibitem{whitten2007systems}
 {\sc\bgroup}Whitten{\egroup}, J.

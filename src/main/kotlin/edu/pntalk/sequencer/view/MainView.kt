@@ -232,7 +232,27 @@ class Settings: Fragment() {
         form {
             hbox {
                 spacing = 30.0
-                field {  }
+                fieldset("Foreign Simulation") {
+                    hbox {
+                        field("host") {
+                            textfield().bind(PNConfiguration.networkSimulatorHost)
+                        }
+                        field("port") {
+                            textfield() {
+                                text = PNConfiguration.networkSimulatorPort.value.toString()
+                                textProperty().onChange {
+                                    it?.let { changed ->
+                                        if (changed.isInt()) {
+                                            PNConfiguration.networkSimulatorPort.value = changed.toInt()
+                                        }
+                                    }
+                                }
+                                //bind(PNConfiguration.networkSimulatorPort)
+                                filterInput { it.controlNewText.isInt() }
+                            }
+                        }
+                    }
+                }
                 button("...") {
                     action {
                         var dir = chooseDirectory("Select Target Directory")
