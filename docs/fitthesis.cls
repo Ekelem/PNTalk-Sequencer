@@ -83,8 +83,6 @@
 \usepackage{csquotes}
 \usepackage{lipsum}
 \usepackage{tabularx}
-\usepackage{pgfplots}
-\usepackage{pgfplotstable}
 
 \ifczech
   \main@language{czech}

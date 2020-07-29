@@ -6,7 +6,6 @@
 \chapter{Úvod}
 
 
-
 Jeden z najzákladnejších problémov, ktoré rieši softvérový vývoj je validácia požiadavkov systému. Tieto požiadavky sú zvyčajne definované pomocou diagramu užitia z UML. 
 Bežný postup je navrhnúť model systému podľa týchto požiadaviek za pomoci ostatných diagramov z UML a otestovať ho manuálne implementovaným prototypom. To predstavuje dosť práce jednak s diagramami UML a navyše implementovaný prototyp pravdepodobne stratí veškeré využitie po validácii modelu. Predstavme si však, že vytvoríme model za použitia objektovo orientovaných petriho sietí, ktorý prichádza s možnosťou simulácie modelu. Táto simulácia poskytuje priestor na automatické vytvorenie UML diagramov. Isteže existujú aj rozšírenia UML a metódy na ich prevod do spustiteľnej formy ako MDA methodology, Executable UML (xUML) language alebo Foundational Subset pre xUML, všetky zo zmienených metód však trpia nedostatkom, keď sa spustitelná forma UML modelu v priebehu validácie upravuje, je takmer nemožné vrátiť sa so zmenamy k pôvodnému modelu. 
 
@@ -16,41 +15,11 @@ Najzložitejšiu časť generovania sekvenčného diagramu predstavuje nahradzov
 
 V kapitole.. TODO
 
-\chapter{Úvod3}
-Softwarové inžinierstvo je kľúčové k úspešnému zvládnutiu dnešných rozsiahlych projektov. Rýchlosť vývoja značne ovplyvňuje komunikácia medzi jednotlivými časťami zainteresovaných osôb. 
-V tak turbulentnej dobe, akou je tá dnešná sa zadanie navyše počas vývoja softwaru mení a býva nekompletné či zavádzajúce.
-Ako si dokážeme udržať prehľad, ktoré komponenty sú potreba, čo je ich prácou a ako by mali spĺňať požiadavky zákazníka? Alebo ako môžme zdieľať návrh systému s kolegami spolupracujúcich na projekte, aby sa zaistila kompatibilita častí systému?  \cite{hamilton2006learning}. Dnešné systémy sú príliš rozsiahle, plné zákerných detailov, ktoré môžu byť zle interpretované alebo kompletne vynechané. Preto udržanie si prehľadu o systéme môže stroskotať bez patričnej pomoci. 
-
-V roku 2019 bola zverejnená správa inštitútu projektového managementu (anglicky Project Managemenet Institute, skratkou PMI), do ktorej prispelo 4455 praktikantov projektového manažmentu z praxe. Z nich najväčšiu časť tvorili odborníci z odvetvia informačných technológií. Report monitoroval obdobie projektov odštartovaných v časovom rámci 12 mesiacov, čiže rok 2018. Ako 5 najčastejšįch príčin zlyhania projektov respondenti uvádzajú: Zmenu priorít organizácie(39\%), Zmena projektových cieľov(37\%), nepresne definované požiadavky(35\%), neadekvátna vízia(29\%), slabá komunikácia(29\%).
-Ako vidno zo štatistík komunikácia stále predstavuje dosť veľký kameň úrazu.
-
-Pomôcť pri komunikácii môžu modelovacie jazyky, ktoré nám umožnia ujasniť si naprieč celým rámcom projektu ako je systém navrhnutý. Najlepšie by bolo zvoliť modelovací jazyk tak, aby mu rozumela aj menej technicky zdatná zúčastnená strana. Asi pre majiteľa projektu nie je vždy prirodzené zorientovať sa v pseudo kóde a podobných technikáliach. Pre všetkých ľahko pochopiteľné sú bezpochyby grafické reprezentácie pohľadov na modelovaný systému. Takéto diagramy nevyžadujú žiadne vyššie vzdelanie na ich pochopenie, navyše obraz je často ľahšie uchopiteľný ako písaný text. V roku 1997 vznikol jazyk UML (anglicky Unified Modeling Language), ktorý definoval notáciu pre širšiu skupinu diagramov pokrývajúce radu esenciálnych pohľadov na modelovaný systém. Jazyk UML sa rýchlo stal štandartom pre diagramy používané na modelovanie systémov. Jeho najprirodzenejšie využitie je práve u objektovo orientovaných systémov. V praxi kreslenie diagramov zabere určitý čas, ktorý by sa mohol využiť efektívnejšie. Vytváranie dokumentácie často nie je prioritou a tak diagramy vidíme hlavne v rannej fázy špecifikácie požiadavkov, pri analýze a navrhu, no potom už čím ďalej menej.
-
-Predsavme si však, že by sme dokázali z modelu systému v akomkoľvek stave a bez investície času, či námahy, automaticky vygenerovať graficky reprezentovaný scenár skúmanej aktivity v podobe sekvenčného diagramu. Tomuto grafickému pohľadu na časť systému by rozumeli nielen IT špecialisti, ale aj technicky menej znalí účastníci projektu. Uľahčila by sa tým komunikácia s uživateľmi, či vlastníkmi projektu. Takýto generátor by otvoril dvere novým možnostiam pri špecifikácii požiadavkov systému, analýze a návrhu systému. Napríklad pri každej oprave by sme mohli ukázať chovanie zaznamenané sekvenčným diagramom pred našou zmenou a po nej, čo by urýchlilo validáciu zo strany zákazníka. Vývojové tímy, by sa ľahšie zorientovali v komponentách, ktoré vyvýjal iný tím a podobne.
-
-Cieľom tejto práce je práve zostrojiť generátor, ktorý z modelu Patriho sietí vygeneruje sekvenčný diagram.
-
-Sekvenčný diagram patrí do jazyka UML od roku 1997(štandart v1.1) ako jeden z diagramov na modelovanie interakcií v systéme. Na druhej strane máme Petriho siete(PT), matematický model, ktorý je schopný vyjadriť kauzalitu udalostí, asynchrónnost, paralelizmus a synchronizáciu v modelovanom systéme. Petriho siete sa do UML dostali len ako inšpirácia pre diagram aktivít v roku 1999(v 1.3). Na prvý pohľad je zrejmé, že diagram interakcií s matematickým modelom Petriho sietí má pramálo spoločného a táto absencia relevantných informácii zrejme neumožňuje automatické generovanie z jedného modelu na druhý. \\
-
-To sa zmení pri transformácii PT Petriho sietí do  funkcionálnych Petriho sietí (FPN) a následnou transformáciou do objektovo orientovaných Petriho sietí (OOPN). Týmto prechodom sa priblížia invokačné prechody z funkcionálnych Petriho sietí k volaniam správ ako ich poznáme zo sekvenčných diagramov. Triedy OOPN sa priblížia k objektom sekvenčných diagramov. Táto analógia je základným stavebným kameňom pre vytvorenie funkčného generátoru sekvenčných diagramov z objektovo orientovaných Petriho sietí.
-
 \chapter{Úvod2}
 
-Projektový manažment
+Jeden z najzákladnejších problémov, ktoré rieši softvérový vývoj v ranných fázach je modelovanie systému. K jednej zo zaužívaných variant pre modelovanie systému patrí jazyk UML (Unified Modeling Language) ku ktorému od roku 1997(štandart v1.1) patrí sekvenčný diagram ako jeden z diagramov na modelovanie interakcií v systéme. Na druhej strane máme Petriho siete(PT), matematický model, ktorý je schopný vyjadriť kauzalitu udalostí, asynchrónnost, paralelizmus a synchronizáciu. Petriho siete sa do UML dostali len ako inšpirácia pre diagram aktivít v roku 1999(v 1.3). Na prvý pohľad je zrejmé, že diagram interakcií s matematickým modelom Petriho sietí má pramálo spoločného a táto absencia relevantných informácii zrejme neumožňuje automatické generovanie z jedného modelu na druhý. 
 
-Reportu sa účastnilo 4455 praktikantov projektového manažmentu. Z nich najväčšiu časť tvorili odborníci z odvetvia informačných technológií.
-Podľa reportu inštitútu projektového managementu (anglicky Project Managemenet Institute, skratkou PMI) až 36 percent projektov nie je dokončených na čas, a až 43 percent prekročí stanovený rozpočet. Tieto čisla by nemuseli byť také veľké..
-
-Z toho ako 5 najčastejšįch respondenti uvádzajú: Zmenu priorít organizácie(39\%), Zmena projektových cieľov(37\%), nepresne definované požiadavky(35\%), neadekvátna vízia(29\%), slabá komunikácia(29\%).
-Predsavme si, že by sme dokázali z modelu systému v akomkoľvek stave a bez investície času, či námahy, automaticky vygenerovať graficky reprezentovaný scenár skúmanej aktivity v podobe sekvenčného diagramu. Tomuto grafickému pohľadu na časť systému by rozumeli nielen naši kolegovia, ale aj technicky menej znalí účastníci projektu. Uľahčila by sa tým komunikácia s uživateľmi, či vlastníkmi projektu.
-
-Ako si dokáže tím udržať prehľad, ktoré komponenty sú potreba, čo je ich prácou a ako by mali spĺňať požiadavky zákazníka? Ba čo viac, ako môžme zdieľať návrh systému s kolegami spolupracujúcich na projekte, aby sa zaistila kompatibilita častí systému?  \cite{hamilton2006learning}. Dnešné systémy sú príliš rozsiahle, plné zákerných detailov, ktoré môžu byť zle interpretované alebo kompletne vynechané.
-
-Jeden z problémov, ktoré rieši softvérové inžinierstvo v ranných fázach vývoja je špecifikácia požiadavkov. V tak turbulentnej dobe, akou je tá dnešná sa zadania počas vývoja softwaru menia a bývajú nekompletné či zavádzajúce. Navyše každá zainteresované osoby môžu mať na systém vlastné, často nezhodujúce sa nároky. Uživateľia, či vlastníci projektu vám povedia scenáre, ako sa má systém chovať, no asi vám nepovedia aké datové štruktúry, či technológie použiť. Pre technicky menej zdatné subjekty vždy pomôže grafická reprezentácia pohľadu na systém. Asi nejeden z nás sa ocitol v situácii, kedy pri vysvetľovaní chovania systému inej osobe použil nejaký ten diagram. 
-
- sa narážame na zadanie, analýza a návrh systému. K jednej zo zaužívaných variant pre modelovanie systému patrí jazyk UML (Unified Modeling Language) ku ktorému od roku 1997(štandart v1.1) patrí sekvenčný diagram ako jeden z diagramov na modelovanie interakcií v systéme. Na druhej strane máme Petriho siete(PT), matematický model, ktorý je schopný vyjadriť kauzalitu udalostí, asynchrónnost, paralelizmus a synchronizáciu. Petriho siete sa do UML dostali len ako inšpirácia pre diagram aktivít v roku 1999(v 1.3). Na prvý pohľad je zrejmé, že diagram interakcií s matematickým modelom Petriho sietí má pramálo spoločného a táto absencia relevantných informácii zrejme neumožňuje automatické generovanie z jedného modelu na druhý. 
-
-To sa zmení pri transformácii PT Petriho sietí do  funkcionálnych Petriho sietí (FPN) a následnou transformáciou do objektovo orientovaných Petriho sietí (OOPN). Týmto prechodom sa priblížia invokačné prechody z funkcionálnych Petriho sietí k volaniam správ ako ich poznáme zo sekvenčných diagramov. Triedy OOPN sa priblížia k objektom sekvenčných diagramov. Táto analógia je základným stavebným kameňom pre vytvorenie funkčného generátoru sekvenčných diagramov z objektovo orientovaných Petriho sietí.
+To sa zmení pri transformácii PT Petriho sietí do  funkcionálnych Petriho sietí (FPN) a následnou transformáciou do objektovo orientovaných Petriho sietí (OOPN). Týmto prechodom sa priblížia invokačné prechody z funkcionálnych Petriho sietí k volaniam správ ako ich poznáme zo sekvenčných diagramov. Triedy OOPN sa priblížia k objektom sekvenčných diagramov. Táto analógia je základným stavebným kameňom pre vytvorenie funkčného generátoru sekvenčných diagramov z objektovo orientovaných Petriho sietí. Celá myšlienka pochádza z vedecko publicistického článku :TODO: reference 
 
 Cieľom práce je okolo tejto myšlienky postaviť generátor, ktorého vstupom je kód jazyka PNTalk popisujúci OOPN a výstupom sekvenčný diagram. Na záver sa správnosť vygenerovaných diagramov posúdi v porovnaní s diagramami vytvorenými ručne odborníkami z praxe.
 
@@ -168,43 +137,10 @@ Okrem modelovo orientovanej analýzi môžme skúmať možnosti systému štýlo
   
 
 
-\section{Návrh systému}
+\section{Modelovanie systému}
 
 
-\section{UML}
-\begin{enumerate}
-	\item Diagram Použitia
-	\item Diagram Aktivít
-	\item Diagram Tried znázorňuje systémovú objektovú štruktúru. Ukazuje triedy objektov, ktoré v systéme figurujú ako aj ich väzby medzi sebou.
-\end{enumerate}
 
-\section{Proces vývoja software}
-Systémy a produkty v 50. rokoch boli primárne hardvérového charakteru. Logické a matematické výpočetné procesy boli implementované pomocou elektromechanických zariadení. V 60. rokoch už integrované obvody umožnili vývojárom zvýšiť spolahlivosť a presnosť výpočtovej techniky do istej miery aj zásahom softwéru. V tejto dobe však chyby alebo zmeny návrhu boli drahé a časovo náročné.
-S Príchodom mikroprocesorovej technológie, začatkom 70. rokov, sa software stal schodnou alternatívou pre integrované obvody. Schopnosti systému, ktoré museli byť inak implementované pomocou harvéru zrazu boli implementovateľné omnoho jednoduchšie a rýchlejšie softwarom. Výsledokom bola evolúcia v návrhu systému, ktoré začali modelovať flexibilné a rekonfigurovateľné systémy.\cite{wasson2006system} To umožnilo vývojárom vytvárať špecifické aplikácie len jednoduchým prispôsobením softwaru.
-Prechod k softwérovým systémom nastal ešte pred vznikom metód na produkovanie softwaru. Keď sa aplikácie stávali robustnejšími a komplexnejšími zvyšoval sa aj risk a pribúdali problémové oblasti. Dodržanie technických očakávaní, rozpočtu, a času odovzdania boli hlavné problémy. Vznikla potreba pre opakovanie a predvídateľnosť úspešných vývojových procesov. Začali vznikať opakovateľné metodológie procesu vývoja. software.
-\subsection{iteratívny}
-Iteratívne procesy akceptujú možnosť zmien a opakujú do istej miery fáze požiadavok, designu a implementácie. Jedným z iteratívnych procesov je Rational Unified Process (RUP)
-\subsection{štrukturovaný}
-Štrukturované modely striktne oddeľujú jednotlivé etapy vývoja, to ich robí nepraktickými pre dnešnú turbulentnú dobu, kde sa špecifikácie systému menia aj za behu vývoja software. Predstaviteľom tohto prístupu je napríklad model Vodopád (Waterfall). Vznikol ako Jeden z prvých pokusov charakterizovať softwarový vývoj ako model. Ilustrácia je na Obr. \ref{fig:waterfall_model}.
-
-\begin{figure}[H]
-	\label{fig:waterfall_model}
-	\centering
-	\includegraphics[scale=0.5]{obrazky-figures/TR-waterfall-model}
-	\caption{Vodopádový model}
-\end{figure}
-
-Vo \textbf{vodopád}ovom modely sú vývojové etapy vykonávané sekvenčne s minimálnym prekrytím a bez iterácií medzi etapamy. Šípky nevedú naspäť do predchádzajúcich etáp. Uživateľské potreby sú stanovené. Požiadavky sa nemenia. Celý systém je navrhnutý, implementovaný a otestovaný pre konečné odovzdanie.
-
-
-\subsection{inkrementálny}
-
-\subsection{Agilný}
-Tento prístup sa vyznačuje flexibilitou. Funguje na princípe extrémne krátkych iterácií. V tomto procese máme fungujúci systém, ktorý neustále rozširujeme. 
-
-\section{Tvorba scenárov} 
-
-Scenár môže byť chápaný celou radou interpretácií, niektoré z nich sú uplatniteľné v systémovom inžinierstve. Scenár môže byť sekvencia aktivít alebo rozhodovací strom viacerých takýchto sekvencií. Vetvy rozhodovacieho stromu reprezentujú alternatívy, či rôzne možnosti chovania systému. Zložitosť scenára je závislá na rozvetvení rozhodovacieho stromu. Scenár môže byť konkrétny či abstraktný \cite{scenarios}. V tejto práci sa budeme zaoberať výlučne konkrétnym scenárom systému, ako súčasť požiadavkov systému definovaných pri analýze systému. Takýto konkrétny scenár bude pohľad na systém zachytávajúci prípad užitia.
 
 
 \chapter{Petriho Siete}
@@ -658,7 +594,7 @@ Keď nepotrebujeme distribuovaný systém, tak zásadne nedistribujeme. Zbytočn
 
 \chapter{Návrh Implementácie}
 
-Základná myšlienka samotného prevádzania objektovo orientovaných petriho sietí je využiť diskrétnu simuláciu tejto siete, ktorej kroky nám vytvoria časové kontinuum inak chýbajúce v objektovo orientovaných petriho sietiach. 
+Základná myšlienka samotného prevádzania objektovo orientovaných petriho sietí je využiť diskrétnu simuláciu tejto siete, ktorej kroky nám vytvoria časové kontinuum inak chýbajúce v petriho sietiach. 
 
 \section{Architektúra}
 
@@ -666,109 +602,16 @@ Generátor sekvenčných diagramov\cite{Analysis2012} je priamo závislý na dvo
 
 Samotné dáta, prúdiace medzi komponentami, či už vo variante lokálne preloženej binárky, alebo webovej aplikácie musia dodržovať jednotné rozhranie a musia byť serializované zo zrejmých príčin. Pri výbere serializačného formátu je nutno zvážiť viaceré faktory ako podpora v rozličných programovacích jazykoch, ľudsky čiteľnejšie textovo založené formáty alebo binárne uložené dáta, ktoré síce postrádajú ľudskú čiteľnosť no vyžadujú menej pamäte a aj ich zápis a čįtanie je časovo menej náročné. Binárne serializačné formáty by zlepšili responsivitu komponent a dáta posielané v ľudsky čiteľnom formáte by mali nespornú výhodu v odľaďovaní programu. Schodnou variantou sa preto javí podpora viacerých formátov prímaných generátorom od ostatným komponent. Nevýhodou je vznik réžie okolo dohadovaní si serializačného formátu medzi komponentami.
 
-\section{Transformácia modelu OOPN na Sekvenčný diagram}
+\section{Napojenie na existujúce validátory jazyka PNTalk a simulátory Objektovo orientovaných Petriho sietí}
 
-V tejto Kapitole budú prednesené hlavné myšlienky ako vytvoriť základné stavebné jednotky sekvenčného diagramu. Popisujúc odkiaľ čerpať potrebné informácie zo simulácie, ako si poradiť z neúplnými informáciami a ako sa vysporiadať z absenciou potrebnej informácie zo simulácie modelu OOPN aby bola škoda na výslednom sekvenčnom diagrame, čo najnižšia. Kapitola je úzko spätá s predchádzajúcimi dvoma kapitolami, keďže bude ťažiť z možností formalismu OOPN a zároveň z vyjadrovacích schopností jazyka PNTalk na vytvorenie datovej štruktúry pre sekvenčný diagram.
 
-\begin{figure} [H]
-	\begin{lstlisting}[language=C++]
-	struct SimulationResult{
-		List<Step> steps;
-		List<Initial> initial;
-	}
-	\end{lstlisting}
-	\caption{Štruktúra uchovávajúca dáta zo simulácie OOPN modelu}
-\end{figure}
 
-Štruktúra výsledku simulácie obsahuje list krokov simulácie a inicializácií inštancií tried. Inštancie totiž môžu vzniknúť aj mimo simulované obdobie (Napríklad trieda označená ako hlavná syntaxou "main" na prvom riadku má vytvorenú inštanciu hneď na začiatku simulácie).
-
-\begin{lstlisting}[language=C++]
-struct SimulationResult{
-	List<Step> steps;
-	List<Initial> initial;
-}
-\end{lstlisting}
-
-Štruktúra krokov simulácie uchováva údaje o správach poslaných v tomto kroku, prechodoch, ktoré začali a skončili v tomto kroku. Prechody totiž môžu začať a skončiť v iných krokoch simulácie. U správ neuvažujeme žiadne spozdenie komunikácie, takže nepotrebujeme rozdeľovať správy na "odoslané od odosieľateľa" a "doručené príjemcovi". Obe tieto veci nastanú v jednom okamihu.
-
-\begin{lstlisting}[language=C++]
-struct Step{
-	List<Message> messages;
-	List<TransitionStart> transStarts;
-	List<TransitionEnd> transEnds;
-}
-\end{lstlisting}
-
-Štruktúra inicializácií inštancí tried obsahuje meno inštancie, referenciu na svoju triedu, čas vzniku a počiatočný stav miest.
-Meno inštancie spolu s menom triedy spolu tvoria štítok objektu v sekvenčnom diagrame. Čas vzniku odsadzuje objekt na ypsilonovej ose od počiatku simulačného času. Počiatočný stav miest funguje ako východzí bod pri vypočítavaní aktuálneho stavu aplikovaním zmien spôsobených prechodmi od vzniku objektu k aktuálnemu času.
-
-\begin{lstlisting}[language=C++]
-struct Initial{
-	string instanceName;
-	string className;
-	int creationTime;
-	List<Place> places;
-}
-\end{lstlisting}
-
-Štruktúra správy obsahuje jej unikátny identifikátor, obsah správy, informácie o odosielateľovi a príjemcovi správy, názov prechodu, ktorý vyvolal správu a záznam, či sa jedná o odpoveď na nejakú už existujúcu správu. Názov inštancie spolu s názvom triedy vytvára unikátny identifikátor pre odosielateľa aj príjemcu správy. Priradenie ku prechodu uľahčuje orientáciu v rámci kroku simulácie, v ktorom sa prechody vykonali simultálne.
-Ak sa jedná o odpoveď nie je nutný žiaden záznam okrem identifikátoru správy, na ktorú sa odpovedá a odpoveď samotná.
-\begin{lstlisting}[language=C++]
-struct Message{
-	int id;		//AUTO_INCREMENT
-	string messageName;
-	string callerInstance;
-	string callerClass;
-	string receiverInstance;
-	string receiverClass;
-	string transition;
-	int respondTo;
-	List<Value> response;
-}
-\end{lstlisting}
-
-Teda odpoveď je akceptovaná v tomto minimálnom tvare:
-
-\begin{lstlisting}[language=C++]
-struct Message{
-	int respondTo;
-	List<Value> response;
-}
-\end{lstlisting}
-
-Štruktúra začiatku prechodu uchováva svôj unikátny identifikátor, svoje meno a meno inštancie a triedy objektu, ktorý prechod vykonal.
-
-\begin{lstlisting}[language=C++]
-struct TransitionStart{
-	int id;		//AUTO_INCREMENT
-	string transName;
-	string instanceName;
-	string className;
-}
-\end{lstlisting}
-
-Štruktúra ukončenia prechodu si drží referenciu na začiatok prechodu, ktorý ukončuje a list zmien v miestach, ktoré sa stali od začiatku prechodu.
-\begin{lstlisting}[language=C++]
-struct TransitionEnd{
-	int idStart;
-	List<Change> changelog;
-}
-\end{lstlisting}
-
-Štruktúra hodnoty miesta obsahuje typ (hodnota alebo referencia na objekt) a hodnota. Typ referencia znamená 
-\begin{lstlisting}[language=C++]
-struct Value{
-	int type;
-	string value;
-}
-\end{lstlisting}
-
+V tejto Kapitole budú prednesené hlavné myšlienky ako vytvoriť základné stavebné jednotky sekvenčného diagramu. Popisujúc odkiaľ čerpať potrebné informácie zo simulácie, ako si poradiť z neúplnými informáciami a ako sa vysporiadať z absenciou potrebnej informácie zo simulácie OOPN aby bola škoda na výsledku generátora, čo najnižšia. Kapitola je úzko spätá s predchádzajúcimi dvoma kapitolami, keďže bude ťažiť z možností formalismu OOPN a zároveň z vyjadrovacích schopností jazyka PNTalk na vytvorenie datovej štruktúry pre sekvenčný diagram.
 
 \subsection*{Objekt}
 Objekt alebo entita je kľúčová časť v scenáry sekvenčného diagramu. Je to obdĺžnik so štítkom mena vo vnútri v ktorom započne čiara života (lifeline) až do deštrukcie objektu, alebo konca simulácie.
 
 \subsubsection*{Vytvorenie objektu}
-Objekt môže vzniknúť za behu simulácie, alebo byť k dispozícií
 Na vytvorenie objektu v sekvenčnom diagrame potrebujeme zo simulácie archivovať minimálne 3 veci:
 
 \begin{enumerate}
@@ -875,6 +718,7 @@ Pre simuláciu bude generátor využívať jeden zo simulátorov objektovo orien
 Distribuovaný systém môže nadobnúť odlišné fyzické formy, či už ide o skupinu osobných počítačov, prepojených lokálnou sieťou, skupinu pracovných staníc zdieľajúcích nielen súborové a databázové systémy, ale navyše aj zdieľaním výpočetnej sily procesora.\cite{}
 
 Distribuovaný systém obsahujúci sadu procesov, ktoré medzi sebou udržujú formu komunikáciu. Okrem konkurenčného behu procesov, niektoré z procesov distribuovaného systému môžu prestať pracovať, pre príklad spadnúť alebo stratiť konektivitu, zatiaľ čo ostatné zostanú bežať a pokračovať v operácii. Toto je podstata čiastočných zlyhaní charakteristických pre distribuované systémy.
+\cite{ovilex_ds2016}
 
 \section{Uživateľské rozhranie}
 
@@ -887,6 +731,7 @@ Pri návrhu grafického uživateľského rozhrania je dobré začať položením
 	\begin{figure}[H]
 		\centering
 		\begin{minipage}{.4\textwidth}
+			\label{fig:fork}
 			\centering
 			\includegraphics[scale=0.75]{obrazky-figures/UI-project-pane}
 			\caption{ Projektový pohľad so schovaným uzlom ``Adresár 2'' a ``Adresár 4''}s
@@ -895,6 +740,7 @@ Pri návrhu grafického uživateľského rozhrania je dobré začať položením
 			\quad
 		\end{minipage}
 		\begin{minipage}{.4\textwidth}
+			\label{fig:join}
 			\centering
 			\includegraphics[scale=0.75]{obrazky-figures/UI-project-pane-dirty}
 			\caption{Indikácia neuložených zmien v súboroch viditeľná na rozhraní.}
@@ -930,149 +776,15 @@ Po zvážení veškerých nárokov na uživateľské rohranie vyšlo z procesu n
 
 \chapter{Implementácia}
 
-\section{Výber implementačného jazyka}
+\section{Implementácie distribuovaného systému pomocou Dockeru}
 
-Práca nadväzuje na simulátor napísaný v jazyku C++, čo robilo z jazyka C++ prirodzenú voľbu pre hľadké naviazanie a kompatibilitu. Ničmenej ďaľším požiadavkom práce, akožto zadaním z oblasti blízkej jazyku PNTalk, bola motivácia držať implementačné jazyky týchto nástrojov blízko. :TODO: príklady Keďže väčšina prác beží na Jave a je do budúcna zmýšlaná ich kooperácia, získali sme ďaľší faktor ovplyvňujúci výber a to držať implementáciu blízko JVM (Java Virtual Machine). Od napojenia na simulátor priamo sa upustilo a zvolila sa varianta umožňujúca napojenie aj iných simulátorov napísaných v rôznych jazykoch. :TODO: Pre prácu bol zvolený ako implementačný jazyk Kotlin, zohľadňujúc požiadavky zmienené vyššie. Prispel k tomu rozvoj modernej doby a popularita akej sa teší Kotlin dnes. V roku 2017 ho Google učinil oficiálnym jazykom pre Android. \cite{tornadofx} Na platforme Github, ktorá hosťuje viac ako 100 miliónov repozitárov rôznych zdrojových kódov napísaných v rôznych jazykoch, bol Kotlin za rok 2019 štvrtý najrýchlejšie rastúci programovací jazyk s nárastom o 182\% oproti minulému roku. \cite{githuboctoverse}
-V prvej polovici roku 2020, teda súčastnosti písania tejto práce, je celkovo na 15. priečke v obľúbenosti \cite{githubstats}.
-%\vspace{1cm}
-
-\begin{figure} [H]
-	\label{chart:githubuse}
-	\centering
-	\begin{tikzpicture}
-	\begin{axis}[
-	%ybar=-1cm,
-	%axis x line*=bottom,
-	%axis y line*=left,
-	%height=8cm, width=\textwidth,
-	%bar width=0.8cm,
-	%ylabel={Pridaný kód [\%]},
-	symbolic x coords={JavaScript, Python, Java, Go, C++, TypeScript, Ruby, PHP, C\#, C, Shell, Scala, Rust, Swift, Kotlin},
-	%x tick label style={rotate=45, anchor=east, align=left},
-	%nodes near coords,
-	%nodes near coords align={vertical},    
-	]
-	\addplot[gray,fill] coordinates {(JavaScript,18.789)};
-	\addplot[gray,fill] coordinates {(Python,16.108)};
-	\addplot[gray,fill] coordinates {(Java,10.731)};
-	\addplot[gray,fill] coordinates {(Go,8.922)};
-	\addplot[gray,fill] coordinates {(C++,7.636)};
-	\addplot[gray,fill] coordinates {(TypeScript,7.334)};
-	\addplot[gray,fill] coordinates {(Ruby,6.492)};
-	\addplot[gray,fill] coordinates {(PHP,5.198)};
-	\addplot[gray,fill] coordinates {(C\#,3.797)};
-	\addplot[gray,fill] coordinates {(C,3.320)};
-	\addplot[gray,fill] coordinates {(Shell,2.011)};
-	\addplot[gray,fill] coordinates {(Scala,1.724)};
-	\addplot[gray,fill] coordinates {(Rust,1.113)};
-	\addplot[gray,fill] coordinates {(Swift,0.744)};
-	\addplot[blue,fill] coordinates {(Kotlin,0.670)};
-	\end{axis}
-	\end{tikzpicture} 
-	\caption{Pridaný kód za rok 2020, second quarter - stats report z github.com \cite{githuboctoverse}}
-\end{figure}
-
-\begin{figure} [H]
-	\label{chart:githubgrow}
-	\centering
-\begin{tikzpicture}
-\begin{axis}[
-%ybar=-1cm,
-%axis x line*=bottom,
-%axis y line*=left,
-%height=8cm, width=\textwidth,
-%bar width=1cm,
-%ylabel={Nárast [\%]},
-symbolic x coords={Dart,Rust,HCL,Kotlin,TypeScript,PowerShell,Apex,Python},
-%x tick label style={rotate=45, anchor=east, align=left},
-%nodes near coords,
-%nodes near coords align={vertical}        
-]
-\addplot[gray,fill] coordinates {(Dart,532)};
-\addplot[gray,fill] coordinates {(Rust,235)};
-\addplot[gray,fill] coordinates {(HCL,213)};
-\addplot[blue,fill] coordinates {(Kotlin,182)};
-\addplot[gray,fill] coordinates {(TypeScript,161)};
-\addplot[gray,fill] coordinates {(PowerShell,154)};
-\addplot[gray,fill] coordinates {(Apex,154)};
-\addplot[gray,fill] coordinates {(Python,151)};           
-\end{axis}
-\end{tikzpicture} 
-\caption{Najrýchlejšie rastúce jazyky - Octoverse report 2019 z github.com \cite{githuboctoverse}}
-\end{figure}
-
-\section{Implementácie distribuovaného systému}
-Ako bolo zmienené v návrhu, generátor sa nebude viazať na simulátor ani prekladač do medzikódu. Namiesto toho budú prepojené v distribuovanom heterogénnom systéme.
-
-\subsection{virtualizácia}
-
-\subsubsection{Docker}
-Kvôli prenositeľnosti komponent sa zvolil prístup kontajnerov namiesto robustných virtuálnych strojov. Keďže virtuálne stroje obsahujú separátne jadro operačného systému ich veľkosť sa pohybuje okolo sto či tisíc Megabytov. Zatiaľ čo novo vzniknutý kontajner obsahuje len referenciu na obraz vrstvy súborového systému a nejaké meta dáta konfigurácie, čo vyjde na zopár desiatok kilobytov. \cite{kane2018docker}
-\subsubsection{HyperV}
-
-\subsubsection{Nástroj Compose}
-
-Commpose je nástroj pre definovanie a beh multi-kontajnerových Docker aplikácií. S nástrojom Compose sa používa YAML súbor na konfiguráciu služieb aplikácie. Potom jediným príkazom dokážeme vytvoriť a spustiť všetky služby z konfigurácie. \cite{docker_docs}
-
-\subsection{Vzdialené volanie procedúr}
-
-\subsubsection{gRPC}
-gRPC je technológia navrhnutá pre vzdialenú medziprocesovú komunikáciu, tak aby prekonala nedostatky konvenčných technológií vzdialených volaní procedúr. Kde ostatné technológie používajú textový formát na prenos dát ako JSON alebo XML, gRPC využíva binárneho formátu. Protokol využíva HTTP/2 \cite{kuruppu2019grpc}, čo ho robí ešte rýchlejší vo vzdialenej medziprocesovej komunikácií.
-
-\begin{lstlisting}[language=C++]
-service Simulator {
-	rpc simulate (SimulateRequest) returns (SimulateReply) {}
-}
-
-message SimulateRequest {
-	string code = 1;
-	string scenario = 2;
-	int64 steps = 3;
-}
-
-message SimulateReply {
-	int64 status = 1;
-	string result = 2;
-}
-\end{lstlisting}
+Ako bolo zmienené v návrhu, 
 
 \section{Uživateľské rozhranie}
 
 Implementácia vychádza z dobre pripraveného návrhu v sekcii :TODO: , ktorá bola realizovaná za pomoci kotlinovského aplikačného rámcu TornadoFX nad softvérovou platformou JavaFX.
 
-\subsection{Bohaté internetové aplikácie}
-
-Bohaté internetové aplikácie, (Rich Internet Aplication), niekedy tiež v literatúre pod názvom moderné internetové aplikácie, /cite{psatweb} sú webové aplikácie poskytujúce responzivitu a sú "bohaté" v zmysle funkcionality a možností desktopových aplikácií. Ranné internetové aplikácie poskytovali len HTML grafické uživateľské rozhranie, ktoré dokázalo poslúžiť jednoduchým cieľom, no nemalo ani vzhľad ani responsivitu RIA hlavne kvôli pomalému internetovému spojeniu. RIA je teda výsledkom dnešnej doby poskytujucej vyššiu responzivitu a pokročilejšie grafické uživateľské rozhrania.
-\cite{deitel2008ajax}
-
-Na tvorbu bohatých internetových aplikácií, môžme využiť celú radu aplikačných rámcov, tu vudú spomenuté len varianty zvažované pre túto prácu.
-
-\subsubsection{Ajax}
-
-Výraz Ajax (Asynchronous JavaScript and XML) vznikol vo februáry roku 2005 od Jamesa Garretta. Ajax aplikácie dovoľujú čiastočné aktualizácie stránky. To znamená aktualizovať individuálne časti webu bez nutnosti obnoviť celú stránku. To vytvára viac responzívne GUI ako predtým, dovoľujúci uživateľom ďalej pracovať so stránkov, zatiaľ čo server zpracováva požiadavky. \\
-
-Technológie stojace za Ajaxom - XHTML, CSS, JavaScript, the DOM, XML a XMLHttpRequestobject — nie sú nové. Vlastne už v 90 rokoch existujú príklady asynchrónnych aktualizácií stránky, ktoré rozultovali v JavaScript \cite{deitel2008ajax}. Ničmenej popularita Ajaxu dramaticky narástla až po jeho pomenovaní v roku 2005. \\
-
-Ajax sa ukázal ako nevhodný pre prácu, kvôli nízkej abstrakcii.
-
-\subsubsection{Flex}
-
-\subsubsection{JavaFX}
- JavaFX je softvérová technológia na vytváranie bohatých internetových aplikácií (Rich Internet Application) s obsahom cez širokú škálu platforiem a zariadení.
-Táto technológia bola zvolená k implementácii uživateľského rozhrania. Jazyk sa pôvodne nazýval F3 (Form Follows Function) a jeho priekopníkom a tvorcom bol Chris Oliver, ktorý v tej dobe pracoval pre firmu SeeBeyond \cite{dea2011javafx}. Meno bolo zmenené v roku 2007 na JavaFX. \cite{anderson2009essential}
-
-The first version of JavaFX Script was an interpreted language, and was considered a prototype of the compiled JavaFX Script language that was to come later
-
-Najprv vznikol JavaFX Script ako interpretovaný jazyk, ktorý bol považovaný za prototyp :TODO: kompilovaného JavaFX Script jazyka, ktorý ho mal nahradiť. Tento deklaratívny skriptovací jazyk, tiež staticky typovaný ako Java využíval knižnice Javy a dokonca mohol volať jej metódy, či inštancovať jej triedy. \cite{weaver2007javafx}
-
-V roku 2011 verzia JavaFX 2.0 prestala využívať JavaFX Script a vymenila ho za Javu a JavaFX 2.0 API. \cite{dea2011javafx}Jeho hlavnou nevýhodou bola prerekvizita Javy, ktorá ho ako jediná vedela preložiť. Týmto krokom sa technológia JavaFX dostala k jazykom bežiacim na JVM ako Groovy, JRuby či Kotlin.
-
-\subsubsection{TornadoFX}
-
-Jedna z hlavných výhod pre kotlin spomenutá v sekcii :TODO: bola
-jeho 100 \% interoperabilita s existujúcimi Java knižnicami, vrátane JavaFX. I keď kotlin môže využívať JavaFX priamo rovnakým spôsobom ako v Jave, niektorí verili, že Kotlin má jazykové predispozície aby mohol usmerniť a zjednodušiť vývoj JavaFX aplikácií. Eugen Kiss prototypoval vrstvu nad JavaFX ako KotlinFX, jeho nápad neskôr priviedol ku zdarnejšiemu koncu Edvin Syse v januáry 2016\cite{tornadofx}, keď vydal TornadoFX.
-\\
-TornadoFX usiluje o to, aby znateľným spôsobom minimalizovalo rozsah potrebného kódu na napísanie JavaFX aplikáce. Zahŕňa typovú kontrolu nad komponentmi pri skladaní komponent uživateľského rozhrania a prináša rozšírenia kotlinu ako delegované vlastnosti a injekcia závislostí. TornadoFX je ukážkový príklad ako Kotlin dokáže zúsporniť kód napísaný v Jave.
+\subsection{JavaFX v kotline} 
 
 \subsection{Editor Zdrojového kódu}
 
@@ -1080,18 +792,7 @@ V sekcii \ref{sec:TR-code-editor} boli vymenované niektoré funkcionality, ktor
 
 Zvýrazňovanie zaisťuje asynchrónna funkcia computeHighlighting volaná nad textom z editoru. Je postavená na vyhľadávaní regulárnych výrazov. Globálne v celom rámci sa zvýrazňujú kľúčové slová jazyka PNTalk a mená tried. V rámci danej triedy sa k nim pridá vyhľadávanie názvov prechodov, miest, synchrónnych portov definovaných však len v rozsahu danej triedy.
 
-\subsection{Projektový pohľad}
-
-\subsection{Diagram ako výstup aj interaktívny ladiaci nástroj}
-
 \chapter{Záver}
-
-Cieľom práce bolo implementovať nástroj pre generovanie sekvenčných diagramov. Jediným vstupom tohto generovania bol kód v jazyku PNTalk popisujúci model objektovo orientovanej petriho siete. Ak už používame akýkoľvek proces vývoja systému Výsledok práce využil na generovanie dáta zachytené simulátorom OOPN. Nástroj bol navrhnutý a implementovaný ako distribuovaný systém, ktorého jednou komponentou bol práve simulátor OOPN. Táto architektúra necháva do budúcna otvorené dvere k použitiu vhodnejšieho simulátora, či zapojeniu do systému viac implementácií simulátorov. \\
-
-V práci ma prekvapilo, že som sa dostal k distribuovanému systému, čo som pôvodne od zadania neočakával. Viac komponent pracujúcich na spoločnej úlohe bol koncept, ktorý som si chcel už dlhší čas vyskúšať. Preto sa jednalo o prekvapenie značne príjemné. Dovolilo mi to pochopiť výhody mikroservís z viac praktického hľadiska. \\
-
-V práci by som chcel pokračovať implementovaním filtrovania správ a hľadaním v dátach simulácie vzory cyklov či podmienok. Potenciál vidím aj v zlepšení simulátoru, ktorý by mohol dosahovať lepších časov simulácie a dať tak možnosť vykreslovať sekvenčný diagram responzívne, prakticky ihneď po akejkoľvek zmene v kóde jazyka PNTalk. Za úvahu by stálo i rozšírenie vývojového prostredia.
-Editor kódu zvláda v terajšom stave zvýrazňovanie v kóde a mapovanie častí sekvenčného diagramu k odpovedajúcim častiam kódu, ktoré popisujú chovanie danej časti. Obe tieto funkcionality náramne uľahčujú tvorenie a ladenie kódu, ale editor stále postráda niektoré vlastnosti inteligentnejších vývojových prostredí. Editor kódu by mohol skúšať dopĺňať kód podľa prvých napísaných znakov a pozícií v kóde. Implementované by to mohlo byť rozhodovacím stromom. 
 
 Práca demonštroje automatický prevod objektovo orientovaných Petriho sietí na sekvenčné diagramy, generovanie však pokrýva len podmnožinu sekvenčných diagramov. Objekty Actors vystupujúce v konvenčne vytvorených sekvenčných diagramoch sú v práci zanedbané (keďže informáciu na rozlíšenie obyčajných objektov od Actors nedokázali poskytnúť definície v kóde, ani následná simulácia) a Actors preto vystupujú len ako všeobecné objekty. Ďaľší zrejmý nedostatok vyplýva z naviazania na neúplnú implementáciu simulátora, ktorá neumožňuje simuláciu všetkých validných konštrukcií jazyka PNTalk, len ich podmnožinu. Istou kompenzáciou jest architektúra navrhnutá ako distrubovaný systém, ktorá robí tento problém ľahko riešiteľným v budúcnosti po implementovaní vhodnejšej varianty simulátora. Na Záver je vhodné položiť si otázku či sme boli úspešný.
 To nám zodpovie sada validačných testov. Jedná sa o netriviálne Petriho siete zadefinované v jazyku PNTalk, ktorých vygenerované výstupy boli porovnané s tými ručne vytvorenýmí. Okrem validity vzišla motivácia zaznamenať výsledky aj časovej náročnosti. Časová náročnosť sa merala pre samotný proces generácie sekvenčných diagramov ako aj celkovo beh v spolupráci externých komponent. Plán bol vytýčiť hranice, pre ktoré by bolo reálne simulovať a vykreslovať výsledok generácie ihneď pri zmene vstupnęho kódu. Kvôli neuspokojivým výsledkom v tomto teste (:TODO: graf) sa z pokusu o implementácie funkcie "hot-reload" upustilo. 
