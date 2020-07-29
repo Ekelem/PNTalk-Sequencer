@@ -24,7 +24,7 @@ object PNConfiguration {
     private var dashedStroke = BasicStroke(lineWidth, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0F, floatArrayOf(lineDash), 0F)
     var diagramScale = 1.0
     private var color = Color.BLACK
-    val networkSimulatorHost = SimpleStringProperty("localhost")
+    val networkSimulatorHost = SimpleStringProperty("147.229.196.76")
     val networkSimulatorPort = SimpleIntegerProperty(51898)
     var localTranslate = false
     var localVM = false
@@ -45,7 +45,7 @@ object PNConfiguration {
         highlightShadow.height = 15.0
         highlightShadow.width = 15.0
         highlightShadow.radius = 15.0
-        networkSimulatorHost.set("localhost")
+        networkSimulatorHost.set("147.229.196.76")
     }
 
     fun setOffsetX(x: Double) {

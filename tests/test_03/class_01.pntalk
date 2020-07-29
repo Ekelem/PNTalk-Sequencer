@@ -1,0 +1,17 @@
+class C0 is_a PN
+	object
+        trans t4
+            precond p4((x, #fail))
+            postcond p3(x)
+        trans t1
+            precond p1(#e)
+            action {o := C1 new.}
+            postcond p2(o)
+        trans t3
+            cond p2(o)
+            action {o reset.}
+        place p1(#e)
+        place p2()
+        place p4()
+        place p3(1, 2)
+		

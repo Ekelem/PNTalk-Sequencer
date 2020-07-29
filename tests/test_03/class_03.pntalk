@@ -1,0 +1,18 @@
+class C1 is_a PN
+    object
+        place p1(#e)
+        place p2()
+        place p4()
+        place p3(1, 2)
+
+        trans t1
+            precond p1(#e)
+            action {o := C2 new.}
+            postcond p2(o)
+    method reset
+        place return()
+        trans t
+            cond p2(o)
+            action {o reset.}
+            postcond return(#e)
+       

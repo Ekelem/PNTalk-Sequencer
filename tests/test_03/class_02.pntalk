@@ -1,0 +1,13 @@
+class C2 is_a PN
+    object
+        place p(0)
+        trans t
+            precond p(x)
+            action {y := x + 1.}
+            postcond p(y)
+    method reset
+        place return()
+        trans t
+            precond p(x)
+            postcond return(#e), p(0)
+			
