@@ -30,19 +30,12 @@ class SimulationController: Controller() {
     val alert: AlertController by inject()
     val diagram: DiagramController by inject()
 
-    var grpcClient : GrpcClient? = null
+    //var grpcClient : GrpcClient? = null
     val usingScenario = SimpleBooleanProperty(false)
     val steps = SimpleStringProperty("5")
     val progressComment = SimpleStringProperty("Pipeline not running")
     val completion = SimpleDoubleProperty()
     val initial = SimpleStringProperty("C0")
-
-    init {
-        grpcClient = GrpcClient(ManagedChannelBuilder.forAddress(PNConfiguration.networkSimulatorHost.value, PNConfiguration.networkSimulatorPort.value)
-                .usePlaintext()
-                .executor(Dispatchers.Default.asExecutor())
-                .build())
-    }
 
     fun verifyLocal(semicode: File) : Boolean{
         val file = createTempFile()
@@ -83,7 +76,7 @@ class SimulationController: Controller() {
         }
         else {
             try {
-                val reply: Simulate.SimulateReply = grpcClient!!.simulate("main ${initial.value}\n" + code.getCode(), steps.value.toLong())
+                val reply: Simulate.SimulateReply = PNConfiguration.grpcClient!!.simulate("main ${initial.value}\n" + code.getCode(), steps.value.toLong())
                 if (reply.status != Code.OK_VALUE.toLong()) {
                     Platform.runLater(Runnable {
                         alert.errorMessage(Code.INVALID_ARGUMENT_VALUE, reply.result)
