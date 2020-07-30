@@ -5,3 +5,4 @@ docs/*.out
 docs/*.ptc
 docs/*.bbl
 /target
+stale_outputs_checked

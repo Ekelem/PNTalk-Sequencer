@@ -1,13 +1,10 @@
+# Author: Erik Kelemen <xkelem01@stud.fit.vutbr.cz>
+
 .PHONY: compile run
+
+run: pom.xml
+	java --module-path=./lib/javafx-sdk-11.0.2/lib/ --add-modules javafx.controls,javafx.graphics -jar target/sequencer-maven-project-1.0-jar-with-dependencies.jar
 
 compile: pom.xml
 	mvn package
-
-run: pom.xml
-	mvn compile && mvn exec:java -Dexec.mainClass="edu.pntalk.sequencer.Launcher"
-
-run2: pom.xml
-	mvn package
-	java --module-path=./lib/javafx-sdk-11.0.2/lib/ --add-modules=javafx.controls,javafx.graphics -jar target/sequencer-maven-project-1.0-jar-with-dependencies.jar
-
-	
+	jar ufm target/sequencer-maven-project-1.0-jar-with-dependencies.jar manifest.txt

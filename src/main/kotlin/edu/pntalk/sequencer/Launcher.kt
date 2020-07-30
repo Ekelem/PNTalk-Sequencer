@@ -1,6 +1,5 @@
 package edu.pntalk.sequencer
 
-import edu.pntalk.sequencer.app.Sequencer
 import edu.pntalk.sequencer.app.Styles
 import edu.pntalk.sequencer.model.CodeController
 import edu.pntalk.sequencer.model.ProjectController

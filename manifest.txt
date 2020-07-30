@@ -1,0 +1,2 @@
+Add-Exports: javafx.graphics/com.sun.javafx.geom javafx.graphics/com.sun.javafx.text javafx.graphics/com.sun.javafx.scene.text 
+Add-Opens: javafx.graphics/javafx.scene.text javafx.graphics/com.sun.javafx.text
