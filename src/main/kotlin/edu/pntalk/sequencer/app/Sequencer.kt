@@ -3,11 +3,8 @@ package edu.pntalk.sequencer.app
 import edu.pntalk.sequencer.model.CodeController
 import edu.pntalk.sequencer.model.ProjectController
 import edu.pntalk.sequencer.view.MainView
+import javafx.application.Application
 import javafx.stage.Stage
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.channels.consumeEach
 import tornadofx.App
 
 class MyApp: App(MainView::class, Styles::class) {
@@ -17,7 +14,9 @@ class MyApp: App(MainView::class, Styles::class) {
     //val executor = Executors.newSingleThreadExecutor()
 
     override fun start(stage: Stage) {
+        print("Hella")
         super.start(stage)
+        stage.show()
         stage.isMaximized = true
         code.subscription()
     }

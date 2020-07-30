@@ -1,5 +1,5 @@
 package edu.pntalk.sequencer.model
-
+/*
 import kotlinx.coroutines.*
 import tornadofx.*
 import java.io.File
@@ -43,4 +43,4 @@ object Validator {
         }
         verifier = job
     }
-}
+}*/
