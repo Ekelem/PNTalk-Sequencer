@@ -3,4 +3,5 @@ sequencer-maven-project.iml
 docs/*.aux
 docs/*.out
 docs/*.ptc
+docs/*.bbl
 /target

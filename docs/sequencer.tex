@@ -3,27 +3,73 @@
 \newtheorem{note}{Poznámka}[section]
 \newtheorem{exmpl}{Príklad}[section]
 
+\newpage
+\section*{Zoznam skratiek}
+\textbf{OOPN} Objektovo orientované Petriho siete (Object-oriented Petri Nets)\\
+\textbf{PT} miesto/prechod (Place/Transition)\\
+\textbf{CPU} Centrální procesorová jednotka (Central processing unit)\\
+\textbf{GC} Způsob automatické správy paměti (Garbage collector)\\
+\textbf{GPU} Grafický procesor (Graphic processing unit)\\
+\textbf{GUI} Grafické uživatelské rozhraní (Graphic User Interface)\\
+\textbf{HW} Hardware\\
+\textbf{IT} Informační technologie (Information Technology)\\
+\textbf{PC} Osobní počítač (Personal computer)\\
+\textbf{UI} Uživatelské rozhraní (User Interface)\\
+\textbf{SW} Software\\
+\newpage
+
 \chapter{Úvod}
 
+Úspešnú realizáciou projektu na poli informačných technológií predchádza mnoho úskalí. Model systému je väčšinou popísaný fádne. V tak turbulentnej dobe, akou je tá dnešná sa zadania práce často menia a samotné zadanie býva nekompletné či zavádzajúce. Vývoj musí byť rýchly a efektívny aby bol profit čo najväčší. Keďže navrhované systémy sú zložité a času je málo, na projektoch pracuje viac ľudí, ktorý sa spoločnou snahou snažia realizovať projekt. Je bežným javom, že sa zainteresované strany, ktoré by mali realizovať projekt, spolu nezhodnú, či omylom interpretujú zadanie inak. Z pohľadu jednotlivca je ťažké udržať si prehľad o celom projekte, mať prehľad o komponentách, čo robia a aké požiadavky zákazníka majú spĺňať. Dnešné systémy sú príliš rozsiahle, plné zákerných detailov, ktoré môžu byť zle interpretované alebo kompletne vynechané. Preto udržanie si prehľadu o modelu môže stroskotať bez patričnej pomoci.
 
-Jeden z najzákladnejších problémov, ktoré rieši softvérový vývoj je validácia požiadavkov systému. Tieto požiadavky sú zvyčajne definované pomocou diagramu užitia z UML. 
-Bežný postup je navrhnúť model systému podľa týchto požiadaviek za pomoci ostatných diagramov z UML a otestovať ho manuálne implementovaným prototypom. To predstavuje dosť práce jednak s diagramami UML a navyše implementovaný prototyp pravdepodobne stratí veškeré využitie po validácii modelu. Predstavme si však, že vytvoríme model za použitia objektovo orientovaných petriho sietí, ktorý prichádza s možnosťou simulácie modelu. Táto simulácia poskytuje priestor na automatické vytvorenie UML diagramov. Isteže existujú aj rozšírenia UML a metódy na ich prevod do spustiteľnej formy ako MDA methodology, Executable UML (xUML) language alebo Foundational Subset pre xUML, všetky zo zmienených metód však trpia nedostatkom, keď sa spustitelná forma UML modelu v priebehu validácie upravuje, je takmer nemožné vrátiť sa so zmenamy k pôvodnému modelu. 
+V roku 2019 bola zverejnená správa inštitútu projektového menežmentu (anglicky Project Managemenet Institute, skratkou PMI), do ktorej prispelo 4455 praktikantov projektového manažmentu z praxe. Z nich najväčšiu časť tvorili odborníci z odvetvia informačných technológií. Report monitoroval obdobie projektov odštartovaných v časovom rámci 12 mesiacov. Ako 5 najčastejšįch príčin zlyhania projektov respondenti uviedli: zmenu priorít organizácie(39\%), zmena projektových cieľov(37\%), nepresne definované požiadavky(35\%), neadekvátna vízia(29\%) a slabá komunikácia(29\%).
+Ako vidno zo štatistík komunikácia stále predstavuje dosť veľký kameň úrazu.
 
-Hlavným cieľom práce je vytvoriť plnohodnotný nástroj na validáciu modelu, ktorý vygeneruje sekvenčný diagram z jazyka UML. Jazyk UML definuje viac diagramov interakcií z ktorých by sa dalo vybrať, no narozdiel od diagramu interakcií sa dá vygenerovať zo simulácie a navyše je sekvenčný diagram druhý nanajvýš používaný z diagramov UML. Od nástroja sa očakáva, že by mal analyzovať všetky možné scenáre, rozlíšiť redundantné výskyty častí scenárov a agregovať ich, aby obmedzil zobrazované informácie. Ďalej by mal poskytovať intuitívne rozhranie a zachovať všetky informácie zo simulácie ľahko dohľadateľné.
+Pomôcť pri komunikácii môžu modelovacie jazyky, ktoré nám umožnia ujasniť si naprieč celým rámcom projektu architektúru systému. Najlepšie by bolo zvoliť modelovací jazyk tak, aby mu rozumela aj menej technicky zdatná zúčastnená strana. Asi pre majiteľa projektu nie je vždy prirodzené zorientovať sa v pseudo kóde a podobných technikáliach. Pre všetkých ľahko pochopiteľné sú bezpochyby grafické reprezentácie pohľadov na modelovaný systém. Takéto diagramy nevyžadujú žiadne vyššie vzdelanie na ich pochopenie, navyše obraz je často ľahšie uchopiteľný ako písaný text. V roku 1997 vznikol jazyk UML (anglicky Unified Modeling Language), ktorý definoval notáciu pre širšiu skupinu diagramov pokrývajúce radu esenciálnych pohľadov na modelovaný systém. Jazyk UML sa rýchlo stal štandartom pre diagramy používané na modelovanie systémov. Jeho najprirodzenejšie využitie je práve u objektovo orientovaných modelov. V praxi kreslenie diagramov zabere určitý čas, ktorý by sa mohol využiť efektívnejšie. Ďaľšiu nevýhodou je možná chyba, aj ten sebelepší odborńik na vyvýjaný sytém občas spraví chybu.
 
-Najzložitejšiu časť generovania sekvenčného diagramu predstavuje nahradzovanie dát potrebných na zostavenie sekvenčného diagramu, chýbajúcich v reprezentácii pomocou objektovo orientovaných petriho sietí.
+Predsavme si však, že by sme dokázali z modelu systému v akomkoľvek stave a bez investície času, či námahy, vygenerovať graficky reprezentovaný scenár skúmanej aktivity v podobe sekvenčného diagramu. A to všetko automaticky a neomyľne. Tomuto grafickému pohľadu na časť systému by rozumeli nielen špecialisti z oboru, ale aj technicky menej znalí účastníci projektu. Uľahčila by sa tým komunikácia s uživateľmi, či vlastníkmi projektu. Takýto generátor by otvoril dvere novým možnostiam pri špecifikácii požiadavkov systému, analýze a návrhu systému. Napríklad pri každej oprave by sme mohli ukázať chovanie zaznamenané sekvenčným diagramom pred našou zmenou a po nej, čo by urýchlilo validáciu zo strany zákazníka. Vývojové tímy, by sa ľahšie zorientovali v komponentách, ktoré vyvýjal iný tím a podobne.
 
-V kapitole.. TODO
+ Isteže existujú aj rozšírenia UML a metódy na ich prevod do spustiteľnej formy ako MDA methodology, Executable UML (xUML) language alebo Foundational Subset pre xUML. Všetky zo zmienených metód však trpia neduhom, pri ktorom spustitelná forma UML modelu v priebehu validácie upravuje, je takmer nemožné vrátiť sa so zmenamy k pôvodnému modelu. 
 
-\chapter{Úvod2}
+Cieľom tejto práce je práve zostrojiť generátor, ktorý z modelu Patriho sietí vygeneruje sekvenčný diagram. K dosiahnutiu tohto odvážneho cieľu bude potreba prizpôsobiť už existujúcu implementáciu simulátoru modelu OOPN. Najdôležitejš ím  krokom je samotná transformácia dát zo simulácie na sekvenčný diagram. Ako posledný krok by malo byť realizovanie spätného mapovania aktivít do modelu OOPN. \\
 
-Jeden z najzákladnejších problémov, ktoré rieši softvérový vývoj v ranných fázach je modelovanie systému. K jednej zo zaužívaných variant pre modelovanie systému patrí jazyk UML (Unified Modeling Language) ku ktorému od roku 1997(štandart v1.1) patrí sekvenčný diagram ako jeden z diagramov na modelovanie interakcií v systéme. Na druhej strane máme Petriho siete(PT), matematický model, ktorý je schopný vyjadriť kauzalitu udalostí, asynchrónnost, paralelizmus a synchronizáciu. Petriho siete sa do UML dostali len ako inšpirácia pre diagram aktivít v roku 1999(v 1.3). Na prvý pohľad je zrejmé, že diagram interakcií s matematickým modelom Petriho sietí má pramálo spoločného a táto absencia relevantných informácii zrejme neumožňuje automatické generovanie z jedného modelu na druhý. 
+Sekvenčný diagram patrí do jazyka UML od roku 1997(štandart v1.1) ako jeden z diagramov na modelovanie interakcií v systéme. Na druhej strane máme Petriho siete(PT), matematický model, ktorý je schopný vyjadriť kauzalitu udalostí, asynchrónnost, paralelizmus a synchronizáciu v modelovanom systéme. Petriho siete sa do UML dostali len ako inšpirácia pre diagram aktivít v roku 1999(v 1.3). Na prvý pohľad je zrejmé, že diagram interakcií s matematickým modelom Petriho sietí má pramálo spoločného a táto absencia relevantných informácii zrejme neumožňuje automatické generovanie z jedného modelu na druhý. \\
 
-To sa zmení pri transformácii PT Petriho sietí do  funkcionálnych Petriho sietí (FPN) a následnou transformáciou do objektovo orientovaných Petriho sietí (OOPN). Týmto prechodom sa priblížia invokačné prechody z funkcionálnych Petriho sietí k volaniam správ ako ich poznáme zo sekvenčných diagramov. Triedy OOPN sa priblížia k objektom sekvenčných diagramov. Táto analógia je základným stavebným kameňom pre vytvorenie funkčného generátoru sekvenčných diagramov z objektovo orientovaných Petriho sietí. Celá myšlienka pochádza z vedecko publicistického článku :TODO: reference 
+To sa zmení pri transformácii PT Petriho sietí do  funkcionálnych Petriho sietí (FPN) a následnou transformáciou do objektovo orientovaných Petriho sietí (OOPN). Týmto prechodom sa priblížia invokačné prechody z funkcionálnych Petriho sietí k volaniam správ ako ich poznáme zo sekvenčných diagramov. Triedy OOPN sa priblížia k objektom sekvenčných diagramov. Táto analógia je základným stavebným kameňom pre vytvorenie funkčného generátoru sekvenčných diagramov z objektovo orientovaných Petriho sietí.
 
-Cieľom práce je okolo tejto myšlienky postaviť generátor, ktorého vstupom je kód jazyka PNTalk popisujúci OOPN a výstupom sekvenčný diagram. Na záver sa správnosť vygenerovaných diagramov posúdi v porovnaní s diagramami vytvorenými ručne odborníkami z praxe.
+Text práce začína kapitolou o tvorbe a analýze scenárov pri modelovaní sotwarových systémov. V krátkosti zhrnie výskyt scenárov a ich význam v procese vývoja software. Vo vetšej hĺbke sa povenuje použitiu scenárov naprieč etapamy vývoja pri špecifikácii požiadavkov, analýze a návrhu systému. Kapitola bude uzavretá skúmaním odlišností v jednotlivých metodikách vývoja. Veľká miera textu dopodrobna rozoberie rozšírenia petriho sietí, keďže ich pochopenie bude zásadné pre pochopenie samotnej transformácie modelu. Prirodzene nadväzuje kapitola o sekvenčných diagramoch s dôrazom na notáciu a samotné zostrojenie. Kapitola návrh implementácie sa zameria na úskalia, výber technológií a pokúsi sa navrhnnúť najlepšie riešenie cieľa práce. Predposledná kapitola priamo naviaže už praktickou implementáciou návrhu.
 
 \chapter{Tvorba a analýza scenárov v modelovaní systému}
+ Rozdielne druhy systémov potrebujú rozdielne modelovacie techniky. Napr'iklad najdôležitejším aspektom interaktívnych systémov sú zachytené prípadmi užitia a scenármi. Na druhú strnu rozsiahle dátovo zamerané aplikácie sú vhodnejšie organizovanépomocou entitne vzťahového diagramu alebo objektového diagramu. Navyše špeciálne vlastnosti ako podpora reálneho času, distribúcia či vysoká dostupnosť vyžadujú špecializované modelovacie techniky.
+ 
+ Signifikantné rozdiely rozdelili techniky do 4 typov štýlov:
+
+ 
+ \begin{itemize}
+ 	\item Interaktívny štýl: Hlavným aspektom je interakcia medzi entitami, napríklad interakcia medzi komponentami, grafy volaní, toky správ, toky udalostí. Interakcia môže byť modelovaná použitím diagramu prípadov užitia, spolupráce a interakcie.
+ 	\item Algoritmický štýl: Hlavný aspekt algoritmického štýlu sú algoritmy vykonávajúce komplexné výpočty na abstraktných datových typoch. Algoritmy môžu byť špecifikovanę pseudo kódom alebo špecifickou notáciou.
+ 	\item Data-centrický štýl: The main aspect of the data-centric style is the structure of the data e.g.
+ 	in database modeling. The structure of the data can be modeled using entity-relationship or
+ 	object diagrams.
+ \end{itemize}
+
+\subsection{Tvorba scenárov}
+V tejto sekcii sa popíše tvorba scenárov pre 
+\subsubsection{Doménové modelovanie}
+Predstavme si, že by každý v tíme hovoril rozdielnym jazykom. Povedzme niekto česky, niekto francúzsky a niekto ďaľší zasa Svahilsky. Vždy keď niekto prehovorí, ostatní zachytia akýkoľvek význam týchto cudzích slov, ktorý dokázali zachytiť. Po každej porade, tak odchádzajú s naprosto milnou interpretáciou odznetých slov.
+
+Príklad s rozdielnymi jazykmi je jasne nadstrelený, ale
+povedzme, že pracujeme na reklamnom systéme a hovoríme o pojmoch ako impresia reklamy, preklik reklamy, garantovaná reklama. Pre niekoho môžu byť tieto slová cudzím jazykom.
+
+Doménové modelovanie poskytuje slovník cudzích slov používaných v danej doméne (reklamný systém, knižný systém apod.). Tento glosár, potom slúži pre objasnenie pojmov použitých v scenári.
+
+Tvorba scenárov a prípadov užitia bez vytvorenia doménového modelu má za následky nezrozumiteľnosť. Scenár sa potom naozaj môže javiť ako napísaný v nezrozumiteľnom jazyku.
+
+\subsubsection{Problematiky scenárov}
+
+Pri vytváraní scenárov sa často zabúda na tzv. "rainy-days" scenáre. Voľne preložené ako scenáre za daždivých dní, ktoré opisujú chovanie systému v prípade chýb, zotavenie sa z chyby alebo nejakú drastickejšiu reakciu. Predchádzať tomuto nedostatku môžme 
+
+
 
 \section{Vývoj systému}
 
@@ -141,6 +187,9 @@ Okrem modelovo orientovanej analýzi môžme skúmať možnosti systému štýlo
 
 
 
+\section{Tvorba scenárov} 
+
+Scenár môže byť chápaný celou radou interpretácií, niektoré z nich sú uplatniteľné v systémovom inžinierstve. Scenár môže byť sekvencia aktivít alebo rozhodovací strom viacerých takýchto sekvencií. Vetvy rozhodovacieho stromu reprezentujú alternatívy, či rôzne možnosti chovania systému. Zložitosť scenára je závislá na rozvetvení rozhodovacieho stromu. Scenár môže byť konkrétny či abstraktný \cite{scenarios}. V tejto práci sa budeme zaoberať výlučne konkrétnym scenárom systému, abstrakcia sa zo scenáru odstráni doménovým modelovaním. Viac o tejto probelmatike v sekcii \ref{sec:TR-domain-modeling}.
 
 
 \chapter{Petriho Siete}
@@ -774,11 +823,151 @@ Po zvážení veškerých nárokov na uživateľské rohranie vyšlo z procesu n
 
 
 
-\chapter{Implementácia}
+\chapter{Implementácia nástroja}
+
+Implementoval som prácu v jazyku kotlin a prácu na ktorú som nadväzoval som upravil v jazyku C++, na ich prepojenie som využil verejne dostupné knižnice gRPC pre kotlin /cite{}https://github.com/grpc/grpc-kotlin a pre C++ \cite{}https://github.com/grpc/grpc. Prispôsobil som implementáciu simulátoru a prekladača medzikódu pre použitie s technológiou Docker a vytvoril spustiteľné obrazy týchto dvoch komponent skrz kontajnery dockeru dostupné na :TODO:. Na grafické uživatľské rozhranie bol použitý aplikačný rámec TornadoFX nad knižnicou JavaFX.
 
 \section{Implementácie distribuovaného systému pomocou Dockeru}
 
 Ako bolo zmienené v návrhu, 
+\begin{figure} [H]
+	\label{chart:githubuse}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	%ybar=-1cm,
+	%axis x line*=bottom,
+	%axis y line*=left,
+	%height=8cm, width=\textwidth,
+	%bar width=0.8cm,
+	%ylabel={Pridaný kód [\%]},
+	symbolic x coords={JavaScript, Python, Java, Go, C++, TypeScript, Ruby, PHP, C\#, C, Shell, Scala, Rust, Swift, Kotlin},
+	%x tick label style={rotate=45, anchor=east, align=left},
+	%nodes near coords,
+	%nodes near coords align={vertical},    
+	]
+	\addplot[gray,fill] coordinates {(JavaScript,18.789)};
+	\addplot[gray,fill] coordinates {(Python,16.108)};
+	\addplot[gray,fill] coordinates {(Java,10.731)};
+	\addplot[gray,fill] coordinates {(Go,8.922)};
+	\addplot[gray,fill] coordinates {(C++,7.636)};
+	\addplot[gray,fill] coordinates {(TypeScript,7.334)};
+	\addplot[gray,fill] coordinates {(Ruby,6.492)};
+	\addplot[gray,fill] coordinates {(PHP,5.198)};
+	\addplot[gray,fill] coordinates {(C\#,3.797)};
+	\addplot[gray,fill] coordinates {(C,3.320)};
+	\addplot[gray,fill] coordinates {(Shell,2.011)};
+	\addplot[gray,fill] coordinates {(Scala,1.724)};
+	\addplot[gray,fill] coordinates {(Rust,1.113)};
+	\addplot[gray,fill] coordinates {(Swift,0.744)};
+	\addplot[blue,fill] coordinates {(Kotlin,0.670)};
+	\end{axis}
+	\end{tikzpicture} 
+	\caption{Pridaný kód za rok 2020, second quarter - stats report z github.com \cite{githuboctoverse}}
+\end{figure}
+
+\begin{figure} [H]
+	\label{chart:githubgrow}
+	\centering
+\begin{tikzpicture}
+\begin{axis}[
+%ybar=-1cm,
+%axis x line*=bottom,
+%axis y line*=left,
+%height=8cm, width=\textwidth,
+%bar width=1cm,
+%ylabel={Nárast [\%]},
+symbolic x coords={Dart,Rust,HCL,Kotlin,TypeScript,PowerShell,Apex,Python},
+%x tick label style={rotate=45, anchor=east, align=left},
+%nodes near coords,
+%nodes near coords align={vertical}        
+]
+\addplot[gray,fill] coordinates {(Dart,532)};
+\addplot[gray,fill] coordinates {(Rust,235)};
+\addplot[gray,fill] coordinates {(HCL,213)};
+\addplot[blue,fill] coordinates {(Kotlin,182)};
+\addplot[gray,fill] coordinates {(TypeScript,161)};
+\addplot[gray,fill] coordinates {(PowerShell,154)};
+\addplot[gray,fill] coordinates {(Apex,154)};
+\addplot[gray,fill] coordinates {(Python,151)};           
+\end{axis}
+\end{tikzpicture} 
+\caption{Najrýchlejšie rastúce jazyky - Octoverse report 2019 z github.com \cite{githuboctoverse}}
+\end{figure}
+
+\section{Implementácie distribuovaného systému}
+Ako bolo zmienené v návrhu, generátor sa nebude viazať na simulátor ani prekladač do medzikódu. Namiesto toho budú prepojené v distribuovanom heterogénnom systéme.
+
+\subsection{virtualizácia}
+
+\subsubsection{Docker}
+Bol zvolený prístup kontajnerov technológie Docker namiesto robustných virtuálnych strojov. Keďže virtuálne stroje obsahujú separátne jadro operačného systému ich veľkosť sa pohybuje okolo sto či tisíc Megabytov. Zatiaľ čo novo vzniknutý kontajner obsahuje len referenciu na obraz vrstvy súborového systému a nejaké meta dáta konfigurácie, čo vyjde na zopár desiatok kilobytov. \cite{kane2018docker} Vďaka tejto redukovanej pamäťovej stope sa urýchlil vývoj. Kontajnery sa spúšťali rýchlo, ani ich reštart nebol nijak časovo bolestivý.
+
+\subsubsection{Nástroj Compose}
+
+Docker Commpose je nástroj pre definovanie a beh multi-kontajnerových Docker aplikácií. S nástrojom sa používa súbor na konfiguráciu služieb aplikácie. Potom jediným príkazom dokážeme vytvoriť a spustiť všetky služby z konfigurácie. \cite{docker_docs}
+
+\begin{lstlisting}[language=C++]
+docker-compose up
+\end{lstlisting}
+
+Konfiguráciu bolo nutné vytvoriť pre službu simulátora a pre prekladač do medzikódu podľa :TODO: . Pre službu simulátora sa definoval port 51898 a pre prekladač do medzikódu port 51899. V konfigurácii na Obr. \ref{fig:docker-compose} vidíme otvorené práve tieto dva porty. Služby využívajú Docker obrazy so zdrojovými kódmi a prerekvizitami k prekladu. Sledovanie spusteného kontajneru je vyobrazené na Obr. \ref{fig:docker-desktop1}
+
+\begin{figure}[H]
+	\centering
+\begin{lstlisting}[language=C++]
+services:
+simulator:
+build: ./VM
+ports:
+- "51898:51898"
+links: 
+- "translator"
+volumes: 
+- "./VM:/VM:rw"
+translator:
+build: ./Translator
+ports:
+- "51899:51899"
+volumes:
+- "./Translator:/Translator:rw"
+\end{lstlisting}
+\caption{Použitá konfigurácia v docker-compose.yml}
+\label{fig:docker-compose}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{obrazky-figures/PC-docker-desktop1}
+	\caption{Náhľad do kontajneru v aplikácii Docker Desktop.}
+	\label{fig:docker-desktop1}
+\end{figure}
+
+
+
+
+
+\subsection{Vzdialené volanie procedúr}
+
+\subsubsection{gRPC}
+gRPC je technológia navrhnutá pre vzdialenú medziprocesovú komunikáciu, tak aby prekonala nedostatky konvenčných technológií vzdialených volaní procedúr. Kde ostatné technológie používajú textový formát na prenos dát ako JSON alebo XML, gRPC využíva binárneho formátu. Protokol využíva HTTP/2 \cite{kuruppu2019grpc}, čo ho robí ešte rýchlejší vo vzdialenej medziprocesovej komunikácií.
+
+\begin{lstlisting}[language=C++]
+service Simulator {
+	rpc simulate (SimulateRequest) returns (SimulateReply) {}
+}
+
+message SimulateRequest {
+	string code = 1;
+	string scenario = 2;
+	int64 steps = 3;
+}
+
+message SimulateReply {
+	int64 status = 1;
+	string result = 2;
+}
+\end{lstlisting}
 
 \section{Uživateľské rozhranie}
 
