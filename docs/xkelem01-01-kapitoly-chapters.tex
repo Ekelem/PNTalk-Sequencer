@@ -547,13 +547,11 @@ Participanti komunikácie skrz správy popísané vyššie sú aktívne objekty,
 
 V nasledujúcej sekcii je popísaná syntax a sémantika sekvenčných diagramov.
 
-\subsection{Actor:TODO preklad}
-
 \subsection{objekt}
 
-\subsection{lifeline:TODO preklad čiara života? :D}
+\subsection{čiara života}
 
-\subsection{focus of control:TODO preklad}
+\subsection{aktivácia}
 
 \section{Distribuované systémy}
 
@@ -845,7 +843,7 @@ kde var je dočasná premenná alebo miesto a classname je meno triedy. Problém
 
 Je prekrytá bielym obdĺžnikom po dobu, kedy sa metóda objektu nachádza na zásobníku.
 
-\subsubsection*{Na zásobníku}
+\subsubsection*{Doba aktivácie}
 Doba simulácie po ktorú sa prevádza metóda objektu je viazaná s volaním metód cudzích objektov a preto je nutno archivovať prechody a inštancie, ktoré ich vlastnia. Na tieto prechody potom namapovať prevádzané inštrukcie v chronologickom poradí.
 
 \subsection*{Správa}
@@ -934,11 +932,11 @@ Pri návrhu grafického uživateľského rozhrania je dobré začať položením
 
 \subsection{Rozloženie uživateľského rozhrania}
 
-Nie je treba znovu vynaliezať koleso. Pri návrhu rozloženia elementov uživateľského rozhrania sa preto budeme inšpirovať úspešnými vývojovými prostrediami (Visual Studio, IntelliJ IDEA).
+Pri návrhu rozloženia elementov uživateľského rozhrania sa vychádzalo z rozložení úspešných vývojových prostredí (Visual Studio, IntelliJ IDEA). Tieto uživateľské rozhrania fungujú už dlhšiu dobu, uživateľia sú na ne navyknuté. Preto nie je v zájme práce sa od týchto štandartov odklánať. Elementy, ktoré nájdeme v každom vývojovom prostredí ako editor kódu a projektový pohľad budú umiestnené tak ako všade.
 To samozrejme neplatí o netradičnom elemente vykresľujúci sekvenčný diagram, je to časť ktorá zobrazuje výstup a zároveň je to aj interaktívny debugger. Inšpiráciu pre tento element by sme hľadali márne, v bežných vývojových prostrediach sa nič podobné nenachádza.
 Ničmenej je rovnako, ak nie viac, dôležitý ako editor zdrojového kódu, preto dostane rovnako veľké miesto. \\
 
-Po zvážení veškerých nárokov na uživateľské rohranie vyšlo z procesu návrhu rozloženie na obr. :TODO:
+Po zvážení veškerých nárokov na uživateľské rohranie vyšlo z procesu návrhu rozloženie na obr. \ref{fig:ui-layout}
 
 \begin{figure}[H]
 	\label{fig:ui-layout}
@@ -1076,7 +1074,6 @@ volumes:
 
 
 Kvôli prenositeľnosti komponent sa zvolil prístup kontajnerov namiesto robustných virtuálnych strojov. Keďže virtuálne stroje obsahujú separátne jadro operačného systému ich veľkosť sa pohybuje okolo sto či tisíc Megabytov. Zatiaľ čo novo vzniknutý kontajner obsahuje len referenciu na obraz vrstvy súborového systému a nejaké meta dáta konfigurácie, čo vyjde na zopár desiatok kilobytov. \cite{kane2018docker}
-\subsubsection{HyperV}
 
 \subsubsection{Nástroj Compose}
 
@@ -1129,8 +1126,6 @@ Ajax sa ukázal ako nevhodný pre prácu, kvôli nízkej abstrakcii.
  JavaFX je softvérová technológia na vytváranie bohatých internetových aplikácií (Rich Internet Application) s obsahom cez širokú škálu platforiem a zariadení.
 Táto technológia bola zvolená k implementácii uživateľského rozhrania. Jazyk sa pôvodne nazýval F3 (Form Follows Function) a jeho priekopníkom a tvorcom bol Chris Oliver, ktorý v tej dobe pracoval pre firmu SeeBeyond \cite{dea2011javafx}. Meno bolo zmenené v roku 2007 na JavaFX. \cite{anderson2009essential}
 
-The first version of JavaFX Script was an interpreted language, and was considered a prototype of the compiled JavaFX Script language that was to come later
-
 Najprv vznikol JavaFX Script ako interpretovaný jazyk, ktorý bol považovaný za prototyp :TODO: kompilovaného JavaFX Script jazyka, ktorý ho mal nahradiť. Tento deklaratívny skriptovací jazyk, tiež staticky typovaný ako Java využíval knižnice Javy a dokonca mohol volať jej metódy, či inštancovať jej triedy. \cite{weaver2007javafx}
 
 V roku 2011 verzia JavaFX 2.0 prestala využívať JavaFX Script a vymenila ho za Javu a JavaFX 2.0 API. \cite{dea2011javafx}Jeho hlavnou nevýhodou bola prerekvizita Javy, ktorá ho ako jediná vedela preložiť. Týmto krokom sa technológia JavaFX dostala k jazykom bežiacim na JVM ako Groovy, JRuby či Kotlin.
@@ -1153,6 +1148,12 @@ Zvýrazňovanie zaisťuje asynchrónna funkcia computeHighlighting volaná nad t
 \subsection{Diagram ako výstup aj interaktívny ladiaci nástroj}
 
 \chapter{Testovanie}
+
+K účelom testovania bola zhotovená sada validačných testov. Jedná sa o modely Petriho siete definované v jazyku PNTalk.
+Ich správnosť bola najprv overená validáciou nameraných hodnôt, ktoré zobrazoval v čase ladiaci nástroj v miestach.
+Tým sa overilo, že prechod sa zachoval podľa modelovaného systému. Po overení dát sa vygenerované výstupy odložili a rovnakú pred rovnakú úľohu sa postavili ľudské subjekty.. Subjekty, ktoré ručne tvorili sekvenčné diagramy, taktiež nevyužívali nič iné než kód PNTalku. Jednalo sa o praktikantov softwérového inžinierstva minimálne s praxou jeden rok.
+Výsledok vytvorený človekom sa porovnal s výstupmi generátora.
+Na sekvenčný diagram sa nahliadalo zo štyroch kategórií:
 
 \chapter{Záver}
 
