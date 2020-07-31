@@ -1,0 +1,28 @@
+class C1 is_a PN
+    object
+        place p(0)
+        place pchild()
+        trans t
+            precond p(x)
+            action {y := x + 1.}
+            postcond p(y)
+    method waitFor: x
+        place return()
+        place x()
+        trans t1
+            cond p(y)
+            precond x(x)
+            guard {x < y}
+            postcond return(#fail)
+        trans t2
+            precond x(x), p(x)
+            postcond return(#success), p(0)
+    method reset: o
+        place return()
+        trans t
+            precond p(x)
+            action {o := C1 new.}
+            postcond return(#e), p(0), pchild(o)
+    sync state: x
+        cond p(x)
+

@@ -1,3 +1,7 @@
+/**
+ * @author Erik Kelemen <xkelem01@stud.fit.vutbr.cz>
+ */
+
 package edu.pntalk.sequencer.model
 
 import javafx.beans.property.SimpleStringProperty

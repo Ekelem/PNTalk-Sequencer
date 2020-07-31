@@ -1,6 +1,9 @@
+/**
+ * @author Erik Kelemen <xkelem01@stud.fit.vutbr.cz>
+ */
+
 package edu.pntalk.sequencer.model
 
-import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import tornadofx.Controller
@@ -8,25 +11,64 @@ import tornadofx.getValue
 import tornadofx.observableList
 import tornadofx.setValue
 
+/**
+ * Place representation in table.
+ *
+ * Uses only value, that will be displayed. Type is omitted.
+ *
+ * @property name place name.
+ * @property value place values.
+ * @param name place name.
+ * @param value place values.
+ * @constructor Init [name] and [value].
+ */
 class Place(name : String, value : String) {
     val nameProperty = SimpleStringProperty(name)
     var name by nameProperty
-
-    /*val typeProperty = SimpleIntegerProperty(type)
-    var type by typeProperty*/
 
     val valueProperty = SimpleStringProperty(value)
     var value by valueProperty
 }
 
+/**
+ * Practical value representation.
+ *
+ * Store value type and name.
+ *
+ * @property value place value.
+ * @property type place type.
+ * @param value place value.
+ * @param type place type.
+ * @constructor Init [value] and [type].
+ */
 class SeparateValue(val value: String, val type: Int)
 
+/**
+ * Practical place representation.
+ *
+ * Store place values [SeparateValue] and name.
+ *
+ * @property name place name.
+ * @property values place values.
+ * @param name place name.
+ * @param values place values.
+ * @constructor Init [name] and [values].
+ */
 class SeparatePlace(val name : String, val values : MutableList<SeparateValue>) {
     fun addValue(value : SeparateValue) {
         values.add(value)
     }
 }
 
+/**
+ * Controller class providing logic around changelog box.
+ *
+ * Uses algorithm that applies transition changes on initial state.
+ *
+ * @property diagram diagram controller reference.
+ * @property table list of places.
+ * @constructor Init empty [table].
+ */
 class ChangelogController : Controller(){
     val diagram : DiagramController by inject()
     val table : ObservableList<Place> = observableList()

@@ -1,3 +1,7 @@
+/**
+ * @author Erik Kelemen <xkelem01@stud.fit.vutbr.cz>
+ */
+
 package edu.pntalk.sequencer.model
 
 import javafx.application.Platform
@@ -18,53 +22,6 @@ import javafx.scene.layout.StackPane
 import javafx.scene.transform.Scale
 import tornadofx.add
 import java.awt.event.MouseWheelEvent
-
-class ZoomingPane : Group() {
-    private val zoomFactor: DoubleProperty = SimpleDoubleProperty(1.0)
-/*override fun layoutChildren() {
-    val pos = Pos.TOP_LEFT
-    val width = width
-    val height = height
-    val top = insets.top
-    val right = insets.right
-    val left = insets.left
-    val bottom = insets.bottom
-    val contentWidth = (width - left - right) / zoomFactor.get()
-    val contentHeight = (height - top - bottom) / zoomFactor.get()
-    layoutInArea(content, left, top,
-            contentWidth, contentHeight, 0.0, null,
-            pos.hpos,
-            pos.vpos)*/
-
-    fun getZoomFactor(): Double {
-        return zoomFactor.get()
-    }
-
-    fun setZoomFactor(zoomFactor: Double?) {
-        this.zoomFactor.set(zoomFactor!!)
-    }
-
-    fun zoomFactorProperty(): DoubleProperty {
-        return zoomFactor
-    }
-
-    /*init {
-        //scene.setOnMouseClicked { print("hello") }
-        //children.add(content)
-        val scale = Scale(1.0, 1.0)
-        //content.transforms.add(scale)
-        zoomFactor.addListener(javafx.beans.value.ChangeListener { _: ObservableValue<out Number>, _: Number, newValue: Number ->
-            scale.x = newValue.toDouble()
-            scale.y = newValue.toDouble()
-            requestLayout()
-        })
-        /*MouseWheelListener { event: MouseWheelEvent ->
-            print("hello")
-            setZoomFactor(getZoomFactor() + event.unitsToScroll)
-        }*/
-
-    }*/
-}
 
 class DiagramController: Controller() {
     val code: CodeController by inject()
