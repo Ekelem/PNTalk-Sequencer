@@ -136,6 +136,17 @@
             <version>12.0.2</version>
         </dependency>
     </dependencies>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>https://jcenter.bintray.com/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>kotlin-eap</id>
+            <url>https://dl.bintray.com/kotlin/kotlin-eap/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
@@ -175,6 +186,19 @@
                         <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>0.10.1</version>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>dokka</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
