@@ -5,12 +5,14 @@
 package edu.pntalk.sequencer.model
 
 import io.grpc.ManagedChannelBuilder
+import javafx.beans.property.SimpleDoubleProperty
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleListProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Point2D
 import javafx.scene.effect.BlurType
 import javafx.scene.effect.DropShadow
+import javafx.scene.image.ImageView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 import tornadofx.observableList
@@ -40,6 +42,14 @@ object PNConfiguration {
     var lVM = File("VM2.exe")
     var grpcTranslator = ""
     var grpcVM = ""
+
+    val editIcon = ImageView("/img/icons-edit.png")
+    val folderIcon = ImageView("/img/icons-folder.png")
+    val fileIcon = ImageView("/img/icons-file.png")
+    val unknownIcon = ImageView("/img/icons-unknown.png")
+
+    var iconSize = SimpleDoubleProperty(16.0)
+
     val highlightGlobal = SimpleListProperty(observableList("KEYWORD", "CLS"))
     val highlightClass = SimpleListProperty(observableList("KEYWORD", "CLS", "TRANS", "PLACE", "METHOD", "SYNC", "PAREN", "BRACKET", "BRACE"))
     val highlightShadow = DropShadow()
@@ -69,6 +79,22 @@ object PNConfiguration {
         highlightShadow.width = 15.0
         highlightShadow.radius = 15.0
         networkSimulatorHost.set("localhost")
+
+        setIconsSize()
+    }
+
+    fun setIconsSize() {
+        editIcon.fitHeight = iconSize.value
+        editIcon.fitWidth = iconSize.value
+
+        folderIcon.fitHeight = iconSize.value
+        folderIcon.fitWidth = iconSize.value
+
+        fileIcon.fitHeight = iconSize.value
+        fileIcon.fitWidth = iconSize.value
+
+        unknownIcon.fitHeight = iconSize.value
+        unknownIcon.fitWidth = iconSize.value
     }
 
     fun setOffsetX(x: Double) {

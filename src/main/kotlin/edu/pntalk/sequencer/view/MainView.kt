@@ -3,6 +3,7 @@ package edu.pntalk.sequencer.view
 import edu.pntalk.sequencer.model.*
 import javafx.geometry.Pos
 import javafx.scene.control.TabPane
+import javafx.scene.image.Image
 import javafx.stage.FileChooser
 import kotlinx.coroutines.coroutineScope
 import tornadofx.*
@@ -96,6 +97,7 @@ class MainView : View("Petri net Sequencer") {
 
                         //disableProperty().bind(!model.validCode.toProperty())
                     }
+
                     label(simulator.progressComment) {
                         vboxConstraints {
                             marginTop = 20.0

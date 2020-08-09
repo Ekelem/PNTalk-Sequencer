@@ -11,6 +11,8 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.event.EventHandler
 import javafx.scene.control.*
 import javafx.scene.control.cell.TextFieldTreeCell
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.input.Clipboard
 import javafx.scene.paint.Color
 import javafx.util.StringConverter
@@ -66,6 +68,8 @@ class ProjectController: Controller() {
         val createScrioAction = MenuItem("Create Scenario File..")
         val deleteFolderAction = MenuItem("Delete Directory Recursively..")
 
+
+
         class ProjectConverter(val cell: ProjectCell) : StringConverter<ProjectFile>() {
             override fun toString(project: ProjectFile?): String {
                 return project?.name.orEmpty()
@@ -81,10 +85,7 @@ class ProjectController: Controller() {
         }
 
         init {
-            if (this != null)
-            {
-                converter = ProjectConverter(this)
-            }
+            converter = ProjectConverter(this)
             renameAction.onAction = EventHandler{
                 startEdit()
             }
@@ -128,13 +129,22 @@ class ProjectController: Controller() {
             contextMenu = ContextMenu()
             contextMenu.items.clear()
 
-            //contextMenu.items.clear()
             if (item != null) {
-                if (item.isFile)
+                if (item.isFile) {
                     contextMenu.items.addAll(renameAction, deleteAction, copyPathAction)
-                else
+                    graphic = when {
+                        item.difference() -> PNConfiguration.editIcon
+                        item.name.endsWith(".pntalk") -> PNConfiguration.fileIcon
+                        else -> PNConfiguration.unknownIcon
+                    }
+                }
+                else {
+                    graphic = PNConfiguration.folderIcon
                     contextMenu.items.addAll(createAction, createScrioAction, createFolderAction, renameAction, deleteFolderAction)
+                }
             }
+
+            graphicTextGap = 7.0
         }
 
         //override fun string
@@ -435,17 +445,6 @@ class ProjectController: Controller() {
                 null*/
 
         }
-
-        /*treeview.cellFormat {
-            println(it.name)
-            val dirtyIndicator = if (it.difference()) "*" else ""
-            text = it.name + dirtyIndicator
-            textFill = if (it.difference()) {
-                Color.RED
-            } else {
-                Color.BLACK
-            }
-        }*/
 
         treeview.setCellFactory {
             ProjectCell(this)
