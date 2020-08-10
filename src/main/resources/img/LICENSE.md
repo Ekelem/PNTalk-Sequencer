@@ -1,4 +1,4 @@
-## Attribution to authors
+## Attribution to the authors
 icons are used solely on educational non-comercional use
 
 icons-edit.png, icons-folder.png and icons-file.png in this folder

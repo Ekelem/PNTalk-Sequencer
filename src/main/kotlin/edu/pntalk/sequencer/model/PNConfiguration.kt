@@ -35,11 +35,15 @@ object PNConfiguration {
     private var color = Color.BLACK
     val networkSimulatorHost = SimpleStringProperty("localhost")
     val networkSimulatorPort = SimpleIntegerProperty(51898)
-    var grpcClient : GrpcClient? = null
+    var grpcClient : GrpcClient? = GrpcClient(ManagedChannelBuilder.forAddress(networkSimulatorHost.value, networkSimulatorPort.value)
+            .usePlaintext()
+            .executor(Dispatchers.Default.asExecutor())
+            .build())
     var localTranslate = false
     var localVM = false
     var lTranslator = File("Translator.exe")
     var lVM = File("VM2.exe")
+    var localSimulatorPath = SimpleStringProperty("Simulator")
     var grpcTranslator = ""
     var grpcVM = ""
 
@@ -57,7 +61,6 @@ object PNConfiguration {
     fun changeGrpcAddress() {
         if (grpcClient != null) {
             grpcClient!!.close()
-            grpcClient = null
         }
 
         grpcClient = GrpcClient(ManagedChannelBuilder.forAddress(networkSimulatorHost.value, networkSimulatorPort.value)

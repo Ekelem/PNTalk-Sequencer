@@ -232,8 +232,22 @@ class ErrorFragment(private val errorCode : Int, private val errorMessage : Stri
 class Settings: Fragment() {
     override val root =
         form {
-            hbox {
+            vbox {
                 spacing = 30.0
+                fieldset("Local Simulation") {
+                    field("Simulator binary") {
+                        textfield().bind(PNConfiguration.localSimulatorPath)
+                        button("...") {
+                            action {
+                                val ef = arrayOf(FileChooser.ExtensionFilter("Executable (*, *.exe)", "*", "*.exe"))
+                                val file = chooseFile("Select Target Directory", ef)
+                                if (file.isNotEmpty())
+                                    PNConfiguration.localSimulatorPath.value = file.first().toPath().toString()
+                            }
+                        }
+                    }
+
+                }
                 fieldset("Foreign Simulation") {
                     hbox {
                         field("host") {
@@ -253,11 +267,6 @@ class Settings: Fragment() {
                                 filterInput { it.controlNewText.isInt() }
                             }
                         }
-                    }
-                }
-                button("...") {
-                    action {
-                        var dir = chooseDirectory("Select Target Directory")
                     }
                 }
             }

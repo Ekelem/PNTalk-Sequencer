@@ -76,6 +76,13 @@ class SimulationController: Controller() {
         }
         else {
             try {
+                if (PNConfiguration.grpcClient == null)
+                {
+                    Platform.runLater(Runnable {
+                        alert.errorMessage(Code.CANCELLED_VALUE, "Can not create gRPC client.")
+                    })
+                    return@runBlocking
+                }
                 val reply: Simulate.SimulateReply = PNConfiguration.grpcClient!!.simulate("main ${initial.value}\n" + code.getCode(), steps.value.toLong())
                 if (reply.status != Code.OK_VALUE.toLong()) {
                     Platform.runLater(Runnable {
