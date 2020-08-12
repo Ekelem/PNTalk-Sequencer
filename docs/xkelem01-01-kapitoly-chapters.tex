@@ -13,30 +13,33 @@
 \textbf{GUI} Grafické uživatelské rozhraní (Graphic User Interface)\\
 \textbf{HW} Hardware\\
 \textbf{IT} Informační technologie (Information Technology)\\
-\textbf{PC} Osobní počítač (Personal computer)\\
 \textbf{UI} Uživatelské rozhraní (User Interface)\\
 \textbf{SW} Software\\
 \newpage
 
 \chapter{Úvod}
 
-Úspešnú realizáciou projektu na poli informačných technológií predchádza mnoho úskalí. V tak turbulentnej dobe, akou je tá dnešná sa zadania práce často menia a samotné zadanie býva nekompletné či zavádzajúce. Vývoj musí byť rýchly a efektívny, aby bol profit čo najväčší. To tlačí vývoj k najímaniu viac ľudí a deľbe práce. Na projektoch pracuje veľa ľudí, ktorý sa ho spoločnou snahou snažia úspešne realizovať. Je bežným javom, že sa zainteresované strany, spolu nezhodnú, či omylom interpretujú zadanie inak. Z pohľadu jednotlivca je ťažké udržať si prehľad o celom projekte, mať prehľad o komponentách, čo robia a aké požiadavky zákazníka majú spĺňať. Dnešné systémy sú príliš rozsiahle, plné zákerných detailov, ktoré môžu byť zle interpretované alebo kompletne vynechané. Preto udržanie si prehľadu o modelu môže stroskotať bez patričnej pomoci. 
+Úspešnú realizáciou projektu na poli informačných technológií predchádza mnoho úskalí. V tak turbulentnej dobe, akou je tá dnešná sa zadania práce často menia a samotné zadanie býva nekompletné či zavádzajúce. Na projektoch pracuje viac ľudí v snahe ho urýchliť. Je však bežným javom, že sa zainteresované strany, sa spolu nezhodnú, či omylom interpretujú zadanie inak. Z pohľadu jednotlivca je ťažké udržať si prehľad o celom projekte, mať prehľad o komponentách, čo robia a aké požiadavky majú spĺňať. Dnešné systémy sú príliš rozsiahle, plné zákerných detailov, ktoré môžu byť zle interpretované alebo kompletne vynechané. Preto udržanie si prehľadu môže stroskotať bez patričnej pomoci. \\
 
-V roku 2019 bola zverejnená správa inštitútu projektového menežmentu (anglicky Project Managemenet Institute, skratkou PMI \footnote{Project Managemenet Institute \url{www.pmi.org}}), do ktorej prispelo 4455 praktikantov projektového manažmentu z praxe. Z nich najväčšiu časť tvorili odborníci z odvetvia informačných technológií. Report monitoroval obdobie projektov odštartovaných v časovom rámci 12 mesiacov. Ako 5 najčastejšįch príčin zlyhania projektov respondenti uviedli: zmenu priorít organizácie(39\%), zmena projektových cieľov(37\%), nepresne definované požiadavky(35\%), neadekvátna vízia(29\%) a slabá komunikácia(29\%). \cite{pulse}
-Ako vidno zo štatistík komunikácia stále predstavuje dosť veľký kameň úrazu.
+V roku 2019 bola zverejnená správa inštitútu projektového menežmentu (anglicky Project Managemenet Institute, skratkou PMI \footnote{Project Managemenet Institute \url{www.pmi.org}}), do ktorej prispelo 4455 praktikantov projektového manažmentu z praxe. Z nich najväčšiu časť tvorili odborníci z odvetvia informačných technológií. Report monitoroval obdobie projektov odštartovaných v časovom rámci 12 mesiacov. Ako 5 najčastejšįch príčin zlyhania projektov respondenti uviedli: \footnote{Respondenti na túto otázku mohli uviesť viac príčin než jednu.} \\
+zmenu priorít organizácie(39\%), zmena projektových cieľov(37\%), nepresne definované požiadavky(35\%), neadekvátna vízia(29\%) a slabá komunikácia(29\%). \cite{pulse}
+Ako vidno zo štatistík komunikácia stále predstavuje dosť veľký kameň úrazu. \\
 
-Jeden z najzákladnejších problémov, ktoré rieši softvérový vývoj je validácia požiadavkov systému. Tieto požiadavky sú zvyčajne definované pomocou diagramu užitia z UML. 
-Bežný postup je navrhnúť model systému podľa týchto požiadaviek za pomoci ostatných diagramov z UML a otestovať ho manuálne implementovaným prototypom. To predstavuje dosť práce jednak s diagramami UML a navyše implementovaný prototyp pravdepodobne stratí veškeré využitie po validácii modelu. Predstavme si však, že vytvoríme model za použitia objektovo orientovaných petriho sietí, ktorý prichádza s možnosťou simulácie modelu. Táto simulácia poskytuje priestor na automatické vytvorenie UML diagramov. Isteže existujú aj rozšírenia UML a metódy na ich prevod do spustiteľnej formy ako MDA methodology, Executable UML (xUML) language alebo Foundational Subset pre xUML, všetky zo zmienených metód však trpia nedostatkom, keď sa spustitelná forma UML modelu v priebehu validácie upravuje, je takmer nemožné vrátiť sa so zmenamy k pôvodnému modelu. 
+V pracovnej komunikácii a v pochopení sytému nám môžu pomôcť takzvané modelovacie jazyky. Niečo, čo nám umožní ujasniť si myšlienku o časti systému na ktorom pracuje tím z druhej polovice zemeguľe. Najlepšie by bolo zvoliť modelovací jazyk tak, aby mu rozumela aj menej technicky zdatní účastníci projektu. Asi pre majiteľa projektu nie je vždy prirodzené zorientovať sa v pseudo kóde a podobných technikáliach. Pre všetkých ľahko pochopiteľné sú bezpochyby grafické reprezentácie pohľadov na modelovaný systém. Takéto diagramy nevyžadujú žiadne vyššie vzdelanie na ich pochopenie, navyše obraz je často ľahšie uchopiteľný ako písaný text. V praxi kreslenie diagramov zaberie určitý čas, ktorý by sa mohol využiť efektívnejšie. Preto sa tento čas investuje zvyčajne len pre zkonštruovanie diagramov pre tie najzákernejšie scenáre chovania systému. Ďaľšiu nevýhodou je možná chyba ľudského faktoru. Aj ten sebelepší odborník na vyvýjaný sytém občas spraví chybu.
 
-V pracovnej komunikácii a v pochopení sytému nám môžu pomôcť takzvané modelovacie jazyky. Niečo, čo nám umožní ujasniť si myšlienku o časti systému na ktorom pracuje tím z druhej polovice zemeguľe. Najlepšie by bolo zvoliť modelovací jazyk tak, aby mu rozumela aj menej technicky zdatní účastníci projektu. Asi pre majiteľa projektu nie je vždy prirodzené zorientovať sa v pseudo kóde a podobných technikáliach. Pre všetkých ľahko pochopiteľné sú bezpochyby grafické reprezentácie pohľadov na modelovaný systém. Takéto diagramy nevyžadujú žiadne vyššie vzdelanie na ich pochopenie, navyše obraz je často ľahšie uchopiteľný ako písaný text. V roku 1997 vznikol jazyk UML (anglicky Unified Modeling Language), ktorý definoval notáciu pre širšiu skupinu diagramov pokrývajúce radu esenciálnych pohľadov na modelovaný systém. Jazyk UML sa rýchlo stal štandartom pre diagramy používané na modelovanie systémov. Jeho najprirodzenejšie využitie je práve u objektovo orientovaných modelov. V praxi kreslenie diagramov zabere určitý čas, ktorý by sa mohol využiť efektívnejšie. Ďaľšiu nevýhodou je možná chyba, aj ten sebelepší odborńik na vyvýjaný sytém občas spraví chybu.
+Predsavme si však, že by sme dokázali z modelu systému v akomkoľvek stave a bez investície času, či námahy, vygenerovať graficky reprezentovaný scenár skúmanej aktivity. A to všetko automaticky a neomyľne. Tomuto grafickému pohľadu na časť systému by rozumeli nielen špecialisti z oboru, ale aj technicky menej znalí účastníci projektu. Uľahčila by sa tým komunikácia s uživateľmi, či vlastníkmi projektu. Takýto generátor by otvoril dvere novým možnostiam pri špecifikácii požiadavkov systému, analýze a návrhu systému. Napríklad pri každej oprave by sme mohli ukázať chovanie zaznamenané diagramom pred našou zmenou a po nej, čo by urýchlilo validáciu. Vývojové tímy, by sa ľahšie zorientovali v komponentách, ktoré vyvýjal iný tím a podobne. \\
 
-Predsavme si však, že by sme dokázali z modelu systému v akomkoľvek stave a bez investície času, či námahy, vygenerovať graficky reprezentovaný scenár skúmanej aktivity v podobe sekvenčného diagramu. A to všetko automaticky a neomyľne. Tomuto grafickému pohľadu na časť systému by rozumeli nielen špecialisti z oboru, ale aj technicky menej znalí účastníci projektu. Uľahčila by sa tým komunikácia s uživateľmi, či vlastníkmi projektu. Takýto generátor by otvoril dvere novým možnostiam pri špecifikácii požiadavkov systému, analýze a návrhu systému. Napríklad pri každej oprave by sme mohli ukázať chovanie zaznamenané sekvenčným diagramom pred našou zmenou a po nej, čo by urýchlilo validáciu zo strany zákazníka. Vývojové tímy, by sa ľahšie zorientovali v komponentách, ktoré vyvýjal iný tím a podobne.
+Cieľom tejto práce je práve zostrojiť generátor, ktorý z modelu systému vygeneruje diagram zachytávajúci scenár chovania pri ľubovoľnej aktivite. Práca preskúma možnosti simulácie modelu, ktorá poskytne informácie k transformácii modelu na diagram. Nasledujúci krok po transformácii bude namapovať zobrazené aktivity späť do popisu modelu. \\
 
+Na tomto poli nie je práca priekopnícka, už v minulosti boli podobné pokusy. Napríklad executive UML (xUML), sa vydal opačnou cestou a dovoľuje automaticky generovať spustiteľné a simulovateľné prototypy z diagramov \cite{milicev2009model-driven}. Tento prístup však nepodporuje návrat k modelu. Akékoľvek zmeny v prototype sa nedajú previesť späť. Niekoľko komerčných nástrojov sa pokúša o vykreslovanie behu procesu vizuálne priamo zo zdrojového kódu. Tento prístup však vykresľuje tok procesu na úrovni kódu. Čo môže byť rovnako neprehľadné ako kód samotný.
+
+
+////////////////////////\\
 V roku 1997 vznikol jazyk UML (anglicky Unified Modeling Language), ktorý definoval notáciu pre širšiu skupinu diagramov pokrývajúce radu esenciálnych pohľadov na modelovaný systém. Jazyk UML sa rýchlo stal štandartom pre diagramy používané na modelovanie systémov. Jeho najprirodzenejšie využitie je práve u objektovo orientovaných modelov.
 
  Isteže existujú aj rozšírenia UML a metódy na ich prevod do spustiteľnej formy ako MDA methodology, Executable UML (xUML) language alebo Foundational Subset pre xUML. Všetky zo zmienených metód však trpia neduhom, pri ktorom spustitelná forma UML modelu v priebehu validácie upravuje, je takmer nemožné vrátiť sa so zmenamy k pôvodnému modelu. 
 
-Cieľom tejto práce je práve zostrojiť generátor, ktorý z modelu Patriho sietí vygeneruje sekvenčný diagram. K dosiahnutiu tohto odvážneho cieľu bude potreba prizpôsobiť už existujúcu implementáciu simulátoru modelu OOPN. Najdôležitejš ím  krokom je samotná transformácia dát zo simulácie na sekvenčný diagram. Ako posledný krok by malo byť realizovanie spätného mapovania aktivít do modelu OOPN. \\
+Cieľom tejto práce je práve zostrojiť generátor, ktorý z modelu systému vygeneruje diagram zachytávajúci scenár chovania pri ľubovoľnej aktivite. K dosiahnutiu tohto odvážneho cieľa bude potreba prizpôsobiť už existujúcu implementáciu simulátoru modelu OOPN. Najdôležitejším  krokom je samotná transformácia dát zo simulácie na sekvenčný diagram. Ako posledný krok by malo byť realizovanie spätného mapovania aktivít do modelu OOPN. \\
 
 Sekvenčný diagram patrí do jazyka UML od roku 1997(štandart v1.1) ako jeden z diagramov na modelovanie interakcií v systéme. Na druhej strane máme Petriho siete(PT), matematický model, ktorý je schopný vyjadriť kauzalitu udalostí, asynchrónnost, paralelizmus a synchronizáciu v modelovanom systéme. Petriho siete sa do UML dostali len ako inšpirácia pre diagram aktivít v roku 1999(v 1.3). Na prvý pohľad je zrejmé, že diagram interakcií s matematickým modelom Petriho sietí má pramálo spoločného a táto absencia relevantných informácii zrejme neumožňuje automatické generovanie z jedného modelu na druhý. \\
 
@@ -236,7 +239,8 @@ Scenár môže byť chápaný celou radou interpretácií, niektoré z nich sú 
 
 
 \chapter{Petriho Siete}
-V tejto kapitole je popísaná obecná Petriho sieť a formalizmy, ktoré vedú k jej transformácii na varianty Petriho sietí s potrebnými vlastnosťmi pre automatické generovanie sekvenčných diagramov.
+V tejto kapitole je popísaná obecná Petriho sieť a rozšírenia PN, ktoré vedú na varianty Petriho sietí s potrebnými vlastnosťmi pre automatické generovanie sekvenčných diagramov.
+Od obecnej Petriho siete sa prechádza na objektovo orientovanú Petriho sieť (ďaľej len OOPN). OOPN dovoľuje modelovať systémy v súlade s princípami objektovej orientácie. V neposlednej rade kapitola rozoberie možné zavedenie času do Petriho sietí.
 
 \section{Obecná definícia}
 Ako východziu Petriho sieť pre ďalšie varianty a rozšírania použijeme sieť definovanú v literatúre ako PT-sieť (Place/Transition Net), [Pet81, Rei85], je zobecnením jednoduchšieho modelu CE-sietí (Condition-Event Net).
@@ -310,78 +314,12 @@ místy a pøechody:
 . Tím je deklarováno, které aspekty stavu systému podmiòují
 výskyt odpovídající události (provedení pøechodu), a které aspekty stavu jsou výskytem této
 
-\subsection{Paralelizmus v Petriho sietiach}
+\section{Objektovo orientované Petriho siete}
 
-Paralelizmus môže byť prenesený do Petriho sietí viacerými spôsobmi.
-\begin{enumerate}
-	\item Presdtavme si príklad dvoch triviálnych konkurenčných procesov. Každý môže byť reprezentovaný Petriho sieťov, nech $p \in P_N$ a nech miesto $p$ je zdielané oboma procesmi. 
-	
-	\begin{figure}[H]
-		\label{fig:example-proc}
-		\centering
-		\includegraphics[scale=0.5]{obrazky-figures/PN-process1}
-		\caption{Ukážkový proces}
-	\end{figure}
-	
-	Jednoducho \textbf{zložením} oboch \textbf{sietí} dostaneme jednu. Táto zložená siet na Obr. \ref{fig:parallel-proc} inicializuje dve značky, pre každý proces jednu, tákáto inicializácia vo výpočetných systémoch možná nie je, preto je tento spôsob pramálo využiteľný.
-	
-	\begin{figure}[H]
-		\label{fig:parallel-proc}
-		\centering
-		\includegraphics[scale=0.5]{obrazky-figures/PN-parallel2}
-		\caption{Ukážka zloženia dvoch sietí. V praxi neužitočné.}
-	\end{figure}
+V sekcii :TODO: boli opísané niektoré princípy objektovej orientácie. Petriho sieť v obecnom zavedení sa nedá využiť pre tieto princípy. V diskusii okolo PN bola v práci \cite{rozenberg1991advances} navrhnutá myšlienka invokačných prechodov, ktorá sa stala základom pre zavedenie OOP do Petriho sietí. Následne vzniklo viac nadväzujúcich prác na túto tému ako LOOPN++\cite{lakos1994loopn}, Cooperative Nets \cite{cooperative-nets} či v neposlednej rade PNTalk \cite{pntalk}.
 
-	\item Ďaľší prístup je zvážiť ako sa k paralelizmu pristupuje vo výpočetných systémoch. Niekoľko návrhov je schodných. Jeden z najjednoduchších zahŕňa operácie \textbf{FORK} a \textbf{JOIN}. Operácie boli pôvodne navrhnuté Jackom Dennisom a Earlom Van Hornom v roku 1966. Ich prevedenie do Petriho siete je nasledovné: 
-	
-	\begin{figure}[H]
-		\centering
-		\begin{minipage}{.4\textwidth}
-			\label{fig:fork}
-			\centering
-			\includegraphics[scale=0.5]{obrazky-figures/PN-fork}
-			\caption{Operácia FORK vykonaná v mieste $p_i$ vytvorí proces v miestach $p_j$ a $p_i$.}
-		\end{minipage}
-	\begin{minipage}{.05\textheight} %spacer
-		\quad
-	\end{minipage}
-		\begin{minipage}{.4\textwidth}
-			\label{fig:join}
-			\centering
-			\includegraphics[scale=0.5]{obrazky-figures/PN-join}
-			\caption{Operácia JOIN vykonaná za koncovými miestami procesov $p_j$ a $p_k$ ich spojí a pokračuje v mieste $p_i$.}
-		\end{minipage}
-	\end{figure}
-	
-	\item Iný návrh zavedenia paralelizmu je riadiaca štruktúra \textbf{parbegin} a \textbf{parend} [Djikstra 1968]. Koncept navrhnutý Djikstrom má všeobecnú formu $parbegin$ $S_1; S_2;$\dots$S_n$ $parend$, kde $S_i$ predstavuje výraz. Význam $parbegin | parend$ štruktúry je vykonať každý výraz $S_1; S_2;$\dots$S_n$ paralelne. Prevedenie v Petriho sieti je na Obr. \ref{fig:parbegin}.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.5]{obrazky-figures/PN-parbegin}
-		\caption{Riadiaca štruktúra \emph{parbegin} a \emph{parend} v Petriho sieti}
-		\label{fig:parbegin}
-	\end{figure}
-	
-	
-\end{enumerate} 
-
-\subsection{Čas v Petriho sietiach}
-
-V predchádzajúcich variantách Petriho sietí spomenutých v sekcii :TODO sa čas nijako nezohľadňoval. Konceptu času sa pôvodne zámerne vyhýbalo v originálnej práci C.A.Petriho \cite{petri1966communication}, kvôli efektu, ktoré malo časovanie na chovanie Petriho sietí. Asociácia časových obmedzení na aktivity reprezentované v modeloch alebo systémoch Petriho sietí mohli zabrániť istým prechodom k uskutočneniu. Zničili by tak dôležitý predpoklad, že všetky možné chovania reálnych systémov sú reprezentované štruktúrov Petriho siete \cite{marsan1995modelling}. \\\\
-Koncept času sa dostal do popredia pri popisovaní reálnych aplikácií. V skutočnosti je pravdou, že v oblastiach ako hardvér, komunikačné protokoly a softvérová systémová analýza je časovanie podstatný faktor.
-
-V posledných tridsiatich rokoch výzkumníci definovali viacero možností ako zaviesť časovanie do Petriho sietí ( \cite{Ramchandani1974}, \cite{Holliday1987}, \cite{Ramamoorthy1980}, \cite{Merlin1976})  Spôsoby sú značne ovplyvnené tým, v akom obore boli uplatnené.
-Práca rozoberie v nasledujúcej sekcii výlučne Stochastickú Petriho sieť.
-
-
-
-\subsubsection{Stochastické Petriho siete}
-Generalizovaná stochastická Petriho sieť je 
-
-
-
-\subsection{Varianty petriho Sietí}
-Petriho siete sú koncipované ako plošný (neštrukturovaný) model, kde hierarchický aspekt modelovaného systému nie je nijak vyjadrený. Varianty spomenuté v tejto sekcii sa budú zaoberať rozšírením výpočetnej a modelovacej sily nezbytnej pre prekonanie problému spojeného s plošným statickým modelom. \\\\
+\subsection{Prerekvizity Petriho Sietí}
+Petriho siete sú koncipované ako plošný (neštrukturovaný) model, kde hierarchický aspekt modelovaného systému nie je nijak vyjadrený. Varianty spomenuté v tejto sekcii sa budú zaoberať rozšírením výpočetnej a modelovacej sily nezbytnej pre prekonanie problému spojeného s plošným statickým modelom a povýšenie modelovacej sily k princípom objektovej orientácie. \\\\
 \subsubsection{Inhibítory}
 Inhibítory umožňujú testovať počet značiek v mieste a tým dávajú Petriho sietiam výpočetnú silu Turingového stroja a sú teda schopné počítať všetky vyčísliteľné funkcie. Takouto sieťou je možné špecifikovat ľubovoľný algoritmus.
 \subsubsection{Vysokoúrovňové Petriho siete}
@@ -443,20 +381,156 @@ Pre sugestívnejší zápis dovoluje k stráži prechodu pridať \textbf{akciu p
 
 \subsubsection{Hierarchické Petriho siete}
 
+\label{tr-hierarchyPN}
+Systémy, ktoré majú viac štruktúrne zhodných subsystémov je vhodné modelovať hierarchickými Petriho sieťami. Musí však byť dopredu známy ich počet. Nesmú vznikať dynamicky. Táto varianta PN zavádza množinu pomenovaných stránok obsahujúcich podsiete systému. PN v stránke obsahuje miesta, takzvané \textbf{porty}, určené na prepojenie s inou PN. Uzly v nadradenej PN, ktoré sa napoja na porty podriadenej PN v stránke sa nazývajú \textbf{sokety} \cite{rozenberg1991advances}.
+
+\begin{defn}
+	\label{tr-hierarchy-sub-tr}
+	\textbf{Substitučný prechod} reprezentuje inštanciu stránky a definuje napojenie soketov na porty.
+\end{defn}
+
+\begin{note}
+	Prínos hierarchických PN nie je nijak markantný, predstavujú len akési makrá dobre známe z iných programovacích jazykov. Ich význam je zrejmý až pri dynamickej inštanciácii stránok.
+\end{note}
+
+\subsubsection{Dynamické inštancovanie Petriho sietí}
+
+V sekcii \ref{tr-hierarchyPN} venovanej hierarchickým PN bolo ukázané statické inštancovanie podsietí do nadradenej PN. K dynamickému inštancovaniu využijeme syntakticky podobný koncept stránok a prechodov. Stránky budú navyše obsahovať ukončovacie miesto či prechod označené kľúčovým slovom exit.
+
+\begin{defn}
+	Invokačný prechod bude mať rovnakú notáciu ako substitučný prechod z definície \ref{tr-hierarchy-sub-tr}, jeho sémantika bude však odlišná.
+	
+	\begin{enumerate}
+		\item Vykoná sa vstupná časť invokačného prechodu, čo spočíva v odobraní značiek zo vstupných miest invokačného prechodu a vo vytvorení novej inštancie špecifikovanej stránky. Do vstupných miest stránky sú umiestnené značky, odobrané zo vstupných miest invokačného prechodu.
+		\item Invokovaná sieť potom beží nezávvislo na ostatných inštanciách sietí v systéme pokiaľ v nje nedôjde k nejakej ukončujúcej udalosti. Takou udalosťou môže byť ukončenie prechodu alebo umiestnenie značky do ukončujúceho miesta.
+		\item Dokončenie invokácie spočíva vo vykonaní výstupnej časti invokačnęho prechodu. Značky z portov, priradených výstupným miestam invokačného prechodu sú skopírované do výstupných miest invokačného prechodu. Dôjde k zrušeniu inštancie invokovanej siete.
+	\end{enumerate}
+\end{defn}
+
+Invokačný prechod odpovedá volaniu procedúry, čo uzatvára nároky na modelovanie pomocou PN v súlade s objektovo orientovanými princípami.
+
+\section{Paralelizmus v Petriho sietiach}
+
+Paralelizmus môže byť prenesený do Petriho sietí viacerými spôsobmi.
+\begin{enumerate}
+	\item Presdtavme si príklad dvoch triviálnych konkurenčných procesov. Každý môže byť reprezentovaný Petriho sieťov, nech $p \in P_N$ a nech miesto $p$ je zdielané oboma procesmi. 
+	
+	\begin{figure}[H]
+		\label{fig:example-proc}
+		\centering
+		\includegraphics[scale=0.5]{obrazky-figures/PN-process1}
+		\caption{Ukážkový proces}
+	\end{figure}
+	
+	Jednoducho \textbf{zložením} oboch \textbf{sietí} dostaneme jednu. Táto zložená siet na Obr. \ref{fig:parallel-proc} inicializuje dve značky, pre každý proces jednu, tákáto inicializácia vo výpočetných systémoch možná nie je, preto je tento spôsob pramálo využiteľný.
+	
+	\begin{figure}[H]
+		\label{fig:parallel-proc}
+		\centering
+		\includegraphics[scale=0.5]{obrazky-figures/PN-parallel2}
+		\caption{Ukážka zloženia dvoch sietí. V praxi neužitočné.}
+	\end{figure}
+
+	\item Ďaľší prístup je zvážiť ako sa k paralelizmu pristupuje vo výpočetných systémoch. Niekoľko návrhov je schodných. Jeden z najjednoduchších zahŕňa operácie \textbf{FORK} a \textbf{JOIN}. Operácie boli pôvodne navrhnuté Jackom Dennisom a Earlom Van Hornom v roku 1966. Ich prevedenie do Petriho siete je nasledovné: 
+	
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{.4\textwidth}
+			\label{fig:fork}
+			\centering
+			\includegraphics[scale=0.5]{obrazky-figures/PN-fork}
+			\caption{Operácia FORK vykonaná v mieste $p_i$ vytvorí proces v miestach $p_j$ a $p_i$.}
+		\end{minipage}
+	\begin{minipage}{.05\textheight} %spacer
+		\quad
+	\end{minipage}
+		\begin{minipage}{.4\textwidth}
+			\label{fig:join}
+			\centering
+			\includegraphics[scale=0.5]{obrazky-figures/PN-join}
+			\caption{Operácia JOIN vykonaná za koncovými miestami procesov $p_j$ a $p_k$ ich spojí a pokračuje v mieste $p_i$.}
+		\end{minipage}
+	\end{figure}
+	
+	\item Iný návrh zavedenia paralelizmu je riadiaca štruktúra \textbf{parbegin} a \textbf{parend} [Djikstra 1968]. Koncept navrhnutý Djikstrom má všeobecnú formu $parbegin$ $S_1; S_2;$\dots$S_n$ $parend$, kde $S_i$ predstavuje výraz. Význam $parbegin | parend$ štruktúry je vykonať každý výraz $S_1; S_2;$\dots$S_n$ paralelne. Prevedenie v Petriho sieti je na Obr. \ref{fig:parbegin}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.5]{obrazky-figures/PN-parbegin}
+		\caption{Riadiaca štruktúra \emph{parbegin} a \emph{parend} v Petriho sieti}
+		\label{fig:parbegin}
+	\end{figure}
+	
+	
+\end{enumerate} 
+
+\section{Čas v Petriho sietiach}
+
+V predchádzajúcich variantách Petriho sietí spomenutých v sekcii :TODO sa čas nijako nezohľadňoval. Konceptu času sa pôvodne zámerne vyhýbalo v originálnej práci C.A.Petriho \cite{petri1966communication}, kvôli efektu, ktoré malo časovanie na chovanie Petriho sietí. Asociácia časových obmedzení na aktivity reprezentované v modeloch alebo systémoch Petriho sietí mohli zabrániť istým prechodom k uskutočneniu. Zničili by tak dôležitý predpoklad, že všetky možné chovania reálnych systémov sú reprezentované štruktúrov Petriho siete \cite{marsan1995modelling}. \\\\
+Koncept času sa dostal do popredia pri popisovaní reálnych aplikácií. V skutočnosti je pravdou, že v oblastiach ako hardvér, komunikačné protokoly a softvérová systémová analýza je časovanie podstatný faktor.
+
+V posledných tridsiatich rokoch výzkumníci definovali viacero možností ako zaviesť časovanie do Petriho sietí ( \cite{Ramchandani1974}, \cite{Holliday1987}, \cite{Ramamoorthy1980}, \cite{Merlin1976})  Spôsoby sú značne ovplyvnené tým, v akom obore boli uplatnené.
+Práca rozoberie v nasledujúcej sekcii výlučne Stochastickú Petriho sieť.
+
+
+
+\subsubsection{Stochastické Petriho siete}
+Generalizovaná stochastická Petriho sieť je 
 
 
 
 
-\section{PNTalk}
 
-V predošlej kapitole sme sa dozvedeli akú variantu Petriho sietí budeme potrebovať, teraz je na čase predstaviť praktickú implementáciu formalizmu objektovo orientovaných petriho sietí.
-\section{Trieda a dedičnosť}
 
-\section{Siete}
 
-\subsection{Objektová sieť}
 
-\subsection{Sieť metód}
+\section{Jazyk PNTalk}
+
+V sekcii \ref{} boli vymenované rôzne implementácie OOPN, keďže práca bude využívať PNTalk ako najschodnejšiu variantu pre účely práce, je mu v tejto sekcii venovaná dodatočná pozornosť. Medzi nevýhody použitia jazyka PNTalk patrí jednoznačne absencia zavedenia času (viz. sekcia /ref{}).
+
+\subsection{Termy}
+Termy sú najjednoduchšie výrazy PNTalku. Patria sem:
+\begin{enumerate}
+	\item \emph{Literály}
+	\begin{enumerate}
+		\item Čísla sú objekty, ktoré reprezentujú číselné hodnoty a reagujú na zprávy, ktoré požadujú výsledky matematických operácií. Literál, reprezentujúci číslo je sekvencia číslic, ktorej môže predchádzať znamienko mínus a môže za ňou nasledovať desatinná bodka a ďaľšia sekvencia číslic. Tiež možno použiť notáciu s exponentom, pomocou znaku \emph{e}. \\Príklady čísiel sú  \lstinline{5, 456, -25, 0.005, -12.0, 1.345e5, 0.33e-20}.
+		\item Znaky sú objekty, reprezentujúce jednotlivé symboly abecedy. ich literály
+		sa používajú so symbolom dolára, Napríklad \lstinline{$a, $B, $+, $$, $7}.
+		\item Reťazce sú objekty reprezentujúce sekvenciu znakov. Reťazce reagujú na správy požadujúce prístup k jednotlivým znakom a porovnanie s inými reťazcami. Literál reprezentujúci reťazec je sekvencia znakov uzavretá v apostrofoch. Apostrof vo vnútri reťazca musí byť zdvojený. Príklady reťazcových literálov sú \lstinline{'abcd'}, \lstinline{'can''t'}
+		\item Symboly sú objekty typicky používané ako mená. Symbol je reprezentovaný sekvenciou znakov s prefixom \lstinline{#}, napríklad \lstinline{#abc}, \lstinline{#B52}. Je zaručené, že dva rovnako zapísané symboly reprezentujú rovnaký objekt (na rozdiel od reťazcov).
+		\item Booleovské konštanty sú reprezentované vyhradenými identifikátormi \lstinline{true} a \lstinline{false}.
+		\item Nedefinovaný objekt je reprezentovaný vyhradeným identifikátorom \lstinline{nil}.
+	\end{enumerate}
+	\item \emph{Premenné} môžu v priebehu výpočtu reprezentovať rôzne objekty. Ich hodnotu sa dá programovo ovplyvňovať. Sú to identifikátory s malým počiatočným písmenom s tém, že niektoré identifikátory sú rezervované \lstinline{(true, false nil)}.
+	\item \emph{Pseudopremenné} Existujú dve pseudopremenné, \lstinline{self} a \lstinline{super}. Ich hodnota závisí od kontextu a nie je programovo ovplyvniteľná.
+	\item \emph{Mená tried} sú identifikátory s veľkým počiatočným písmenom. Napríklad \lstinline{Object}, \lstinline{PN}, \lstinline{C1} sú validné mená tried. Ide o konštanty. V priebehu výpočtu sa nemenia.
+\end{enumerate}
+
+\subsection{Siete objektov a metód}
+Miesta a prechody, prepojené hranami tvoria sieť. Siete sú súčasťou špecifikácie tried objektov, komunikujúcich predávaním správ. PNTalk rozlišuje dva druhy sietí:
+
+\begin{enumerate}
+	\item Sieť objektu reprezentuje atribúty objektu (v podobe miest) a jeho vlastnú aktivitu.
+	
+	\item Sieť metódy špecifikuje reakciu objektu na prichádzajúcu správu. Definícia triedy môže obsahovať niekoľko sietí metód. Sieť metódy pozostáva z miest a prechodov, prepojených hranami, rovnako ako sieť objektu, ale ku každej sieti metódy je priradený vzor správy, ktorej prijatím objektu vyvolá dynamické vytvorenie inštancie siete metódy. Vzor správy je zložený zo selektoru správy a formálnych parametrov. Istá podmnožina miest sietí objektu sú parametrová miesta, ktoré slúžia k predaní parametrov pri volaní metódy. Ich mená musia odpovedať menám formálnym parametrov vo vzore správy. Každá sieť obsahuje jedno výstupné miesto (pomenované return), ktoré slúži k predaniu výsledku na vyhodnotenie správy volajúcemu objektu.
+\end{enumerate}
+
+\subsection{Synchrónne porty}
+Súčasťou špecifikácie tried sú okrem sieť objektov a metód aj aj synchrónne porty. Synchrónne porty majú charakter prechodov aj metód. Nie sú sieťou, neobsahujú miesta a prechody. Synchronný port, podobne ako prechod, môže byť prepojený hranami s miestami siete objektu a môže obsahovať stráž. K synchrónnemu portu je pripojený vzor správy na ktorú reaguje, rovnako ako u siete metódy. Môže byť volaný zaslaním správy zo stráže akéhokoľvek prechodu. Synchrónne porty slúžia k testovaniu a prípadnú zmenu stavu. Synchronný port môže byť v danom stave buď provediteľný alebo neprovediteľný.
+
+Špeciálnym prípadom synchrónneho portu je \textbf{predikát}, ktorý slúži čisto na testovanie a nemení stav.
+
+\subsection{Konštruktory}
+Vytvorenie objektu sa v PNTalku realizuje zaslaním správy new príslušnej triede, ktorej inštanciu chceme vytvoriť. Mená tried sú globálne dostupné. Implicitný konštruktor new je pevne zabudovaný do jazyka. Správe new rozumie každá trieda a ako reakciu na ňu vytvorí inštanciu triedy.
+
+Inicializovanú počiatočným značením siete objektu. Pre dodatočnú a prípadne parametrizovanú inicializáciu objektu slúžia špeciálne metódy nazvané (neimplicitné) konštruktory. Syntakticky sú podobné ostatným metódam objektu, ale ako súčasť ich špecifikácie sa objavuje kľúčové slovo construktor.
+
+\subsection{Trieda}
+Model v PNtalku pozostáva z množiny tried. Jedna z nich je určená ako počiatočná. Tá je implicitne inštancovaná pri spustení (zahájení simulácie) modelu.
+
+Trieda je zložená zo sietí objektov, množiny sietí metód, konštruktorov a synchrónnych portov.
+
+
 
 \subsection{Sieť konstruktoru}
 
@@ -469,10 +543,6 @@ V predošlej kapitole sme sa dozvedeli akú variantu Petriho sietí budeme potre
 \subsection{Akcia}
 
 \subsection{Stráž}
-
-\section{PNTalk}
-
-TODO
 
 \chapter{Sekvenčné Diagramy}
 
@@ -575,7 +645,7 @@ V nasledujúcej sekcii je popísaná syntax a sémantika sekvenčných diagramov
 
 Distribuované systémy majú veľa rozdielnych aspektov, ktoré sa ťažko zachytávajú v jednej difinícii. Je omnoho jednoduchšie hovoriť o distribuovaných systémoch špecifikovaním charakteristík, symptómmi, či média distribúcie. \cite{} V tejto práci budeme mať pod pojmom distribuovaný systém uvažovať systém distribuovaný na počítačovej sieti. \\
 
-Distribúcia prichádza ruka v ruke s vednými disciplínami ako tolerácia chýb, real-time systémy, bezpečnosť a systémový manažment
+Distribúcia prichádza ruka v ruke s vednými disciplínami ako tolerácia chýb, real-time systémy, bezpečnosť a systémový manažment.
 
 \subsection{Vymedzenie pojmu distribuovaný systém}
 
