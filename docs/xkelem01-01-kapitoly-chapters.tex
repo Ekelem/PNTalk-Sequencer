@@ -478,12 +478,6 @@ Práca rozoberie v nasledujúcej sekcii výlučne Stochastickú Petriho sieť.
 Generalizovaná stochastická Petriho sieť je 
 
 
-
-
-
-
-
-
 \section{Jazyk PNTalk}
 
 V sekcii \ref{} boli vymenované rôzne implementácie OOPN, keďže práca bude využívať PNTalk ako najschodnejšiu variantu pre účely práce, je mu v tejto sekcii venovaná dodatočná pozornosť. Medzi nevýhody použitia jazyka PNTalk patrí jednoznačne absencia zavedenia času (viz. sekcia /ref{}).
@@ -530,19 +524,11 @@ Model v PNtalku pozostáva z množiny tried. Jedna z nich je určená ako počia
 
 Trieda je zložená zo sietí objektov, množiny sietí metód, konštruktorov a synchrónnych portov.
 
+\subsubsection{Dedičnosť}
 
+\subsection{Dostupné simulátory}
+Pre jazyk PNTalk vzniklo viac implementácií simulátorov v rôznych implementačných jazykoch. Vývoj prebieha takmer výlučne na univerzite Vysokého učenia technického v Brne. V jazyku C++ existuje implementácia využívajúca prvotný preklad do medzikódu a následnú simuláciu už syntakticky a sémanticky korektného kódu \cite{FITBT21442}. Existuje taktiež Interprét v Jave \cite{FITMT22744}.
 
-\subsection{Sieť konstruktoru}
-
-\subsection{Synchrónny port}
-
-\section{Prechod}
-
-\subsection{Podmienky prechodu}
-
-\subsection{Akcia}
-
-\subsection{Stráž}
 
 \chapter{Sekvenčné Diagramy}
 
@@ -1247,10 +1233,8 @@ Na sekvenčný diagram sa nahliadalo zo štyroch kategórií:
 
 Cieľom práce bolo implementovať nástroj pre generovanie sekvenčných diagramov. Zámer práce sa podarilo splniť vo všetkých bodoch.
 
-V práci ma prekvapilo, že som sa dostal k distribuovanému systému, čo som pôvodne od zadania neočakával. Viac komponent pracujúcich na spoločnej úlohe bol koncept, ktorý som si chcel už dlhší čas vyskúšať. Preto sa jednalo o prekvapenie značne príjemné. Dovolilo mi to pochopiť výhody mikroservís z viac praktického hľadiska. \\
-
 V práci by som chcel pokračovať implementovaním filtrovania správ a hľadaním v dátach simulácie vzory cyklov či podmienok. Potenciál vidím aj v zlepšení simulátoru, ktorý by mohol dosahovať lepších časov simulácie a dať tak možnosť vykreslovať sekvenčný diagram responzívne, prakticky ihneď po akejkoľvek zmene v kóde jazyka PNTalk. Za úvahu by stálo i rozšírenie vývojového prostredia.
-Editor kódu zvláda v terajšom stave zvýrazňovanie v kóde a mapovanie častí sekvenčného diagramu k odpovedajúcim častiam kódu, ktoré popisujú chovanie danej časti. Obe tieto funkcionality náramne uľahčujú tvorenie a ladenie kódu, ale editor stále postráda niektoré vlastnosti inteligentnejších vývojových prostredí. Editor kódu by mohol skúšať dopĺňať kód podľa prvých napísaných znakov a pozícií v kóde. Implementované by to mohlo byť rozhodovacím stromom. 
+Editor kódu zvláda v terajšom stave zvýrazňovanie v kóde a mapovanie častí sekvenčného diagramu k odpovedajúcim častiam kódu, ktoré popisujú chovanie danej časti. Obe tieto funkcionality náramne uľahčujú tvorenie a ladenie kódu, ale editor stále postráda niektoré vlastnosti inteligentnejších vývojových prostredí. Editor kódu by mohol skúšať dopĺňať kód podľa prvých napísaných znakov a pozícií v kóde. Implementované by to mohlo byť rozhodovacím stromom.
 
 Práca demonštroje automatický prevod objektovo orientovaných Petriho sietí na sekvenčné diagramy, generovanie však pokrýva len podmnožinu sekvenčných diagramov. Objekty Actors vystupujúce v konvenčne vytvorených sekvenčných diagramoch sú v práci zanedbané (keďže informáciu na rozlíšenie obyčajných objektov od Actors nedokázali poskytnúť definície v kóde, ani následná simulácia) a Actors preto vystupujú len ako všeobecné objekty. Ďaľší zrejmý nedostatok vyplýva z naviazania na neúplnú implementáciu simulátora, ktorá neumožňuje simuláciu všetkých validných konštrukcií jazyka PNTalk, len ich podmnožinu. Istou kompenzáciou jest architektúra navrhnutá ako distrubovaný systém, ktorá robí tento problém ľahko riešiteľným v budúcnosti po implementovaní vhodnejšej varianty simulátora. Na Záver je vhodné položiť si otázku či sme boli úspešný.
 To nám zodpovie sada validačných testov. Jedná sa o netriviálne Petriho siete zadefinované v jazyku PNTalk, ktorých vygenerované výstupy boli porovnané s tými ručne vytvorenýmí. Okrem validity vzišla motivácia zaznamenať výsledky aj časovej náročnosti. Časová náročnosť sa merala pre samotný proces generácie sekvenčných diagramov ako aj celkovo beh v spolupráci externých komponent. Plán bol vytýčiť hranice, pre ktoré by bolo reálne simulovať a vykreslovať výsledok generácie ihneď pri zmene vstupnęho kódu. Kvôli neuspokojivým výsledkom v tomto teste (:TODO: graf) sa z pokusu o implementácie funkcie "hot-reload" upustilo. 
