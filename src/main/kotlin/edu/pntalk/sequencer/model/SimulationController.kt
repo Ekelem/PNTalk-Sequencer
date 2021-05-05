@@ -76,6 +76,10 @@ class SimulationController: Controller() {
         }
         else {
             try {
+                completion.set(0.1)
+                Platform.runLater {
+                    progressComment.set("Checking gRPC client..")
+                }
                 if (PNConfiguration.grpcClient == null)
                 {
                     Platform.runLater(Runnable {
@@ -83,20 +87,38 @@ class SimulationController: Controller() {
                     })
                     return@runBlocking
                 }
+                completion.set(0.3)
+                Platform.runLater {
+                    progressComment.set("Foreign Simulation..")
+                }
                 val reply: Simulate.SimulateReply = PNConfiguration.grpcClient!!.simulate("main ${initial.value}\n" + code.getCode(), steps.value.toLong())
-                if (reply.status != Code.OK_VALUE.toLong()) {
+                if (reply.status != 200L) {
                     Platform.runLater(Runnable {
                         alert.errorMessage(Code.INVALID_ARGUMENT_VALUE, reply.result)
+                        progressComment.set("Pipeline not running.")
                     })
+                    completion.set(0.0)
                     return@runBlocking
+                }
+                completion.set(0.8)
+                Platform.runLater {
+                    progressComment.set("Processing data..")
                 }
                 val json = Json(JsonConfiguration.Stable)
                 val archive = json.parse(Archive.serializer(), reply.result)
                 print(reply.result)
                 diagram.draw(archive)
+                completion.set(1.0)
+                Platform.runLater {
+                    progressComment.set("Diagram completed.")
+                }
                 Platform.runLater(Runnable {
                     alert.outputMessage("Diagram completed.")
                 })
+                completion.set(0.0)
+                Platform.runLater {
+                    progressComment.set("Pipeline not running.")
+                }
                 return@runBlocking
 
 

@@ -248,7 +248,7 @@ class CodeController: Controller() {
     }
 
     fun highlightSpan(step : Int, instance: String, cls: String) {
-        println(step)
+        computeHighlighting(codeArea.text)?.let { applyHighlighting(it) }
     }
 
     fun highlightConnection(message : String, receiver: String, caller: String) {
@@ -346,7 +346,8 @@ class CodeController: Controller() {
     fun getCode():String {
         val stringBuilder = StringBuilder()
         for (file in project.getFiles()) {
-            stringBuilder.append(file.dirty.value)
+            if (file.name.endsWith(".pntalk"))
+                stringBuilder.append(file.dirty.value)
         }
         return stringBuilder.toString()
     }
@@ -378,8 +379,8 @@ class CodeController: Controller() {
     private val KEYWORD_PATTERN = "\\b(" + java.lang.String.join("|", *KEYWORDS) + ")\\b"
     private val PAREN_PATTERN = "\\(|\\)"
     private val BRACE_PATTERN = "\\{|\\}"
-    private val BRACKET_PATTERN = "\\[|\\]"
     private val SEMICOLON_PATTERN = "\\;"
+    private val SYMBOL_PATTERN = "#\\b(.*)\\b"
     private val STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\""
     private val COMMENT_PATTERN = """
         //[^
@@ -387,7 +388,7 @@ class CodeController: Controller() {
         """.trimIndent()
 
     private val PATTERN = Pattern.compile(
-            "(?<KEYWORD>$KEYWORD_PATTERN)|(?<PAREN>$PAREN_PATTERN)|(?<BRACE>$BRACE_PATTERN)|(?<BRACKET>$BRACKET_PATTERN)|(?<SEMICOLON>$SEMICOLON_PATTERN)|(?<STRING>$STRING_PATTERN)|(?<COMMENT>$COMMENT_PATTERN)"
+            "(?<KEYWORD>$KEYWORD_PATTERN)|(?<PAREN>$PAREN_PATTERN)|(?<BRACE>$BRACE_PATTERN)|(?<SEMICOLON>$SEMICOLON_PATTERN)|(?<STRING>$STRING_PATTERN)|(?<COMMENT>$COMMENT_PATTERN)"
     )
 
     private fun getClassRange(text: String): Map<String, IntRange> {
@@ -503,7 +504,6 @@ class CodeController: Controller() {
                         "(?<CLS>$CLASS_PATTERN)|" +
                         "(?<BRACE>$BRACE_PATTERN)|" +
                         "(?<PAREN>$PAREN_PATTERN)|" +
-                        "(?<BRACKET>$BRACKET_PATTERN)|" +
                         "(?<SEMICOLON>$SEMICOLON_PATTERN)|" +
                         "(?<COMMENT>$COMMENT_PATTERN)")
     }
@@ -523,9 +523,9 @@ class CodeController: Controller() {
                         "(?<METHOD>$METHOD_PATTERN)|" +
                         "(?<PAREN>$PAREN_PATTERN)|" +
                         "(?<BRACE>$BRACE_PATTERN)|" +
-                        "(?<BRACKET>$BRACKET_PATTERN)|" +
                         "(?<SEMICOLON>$SEMICOLON_PATTERN)|" +
                         "(?<STRING>$STRING_PATTERN)|" +
+                        "(?<SYMBOL>$SYMBOL_PATTERN)|" +
                         "(?<COMMENT>$COMMENT_PATTERN)")
     }
 

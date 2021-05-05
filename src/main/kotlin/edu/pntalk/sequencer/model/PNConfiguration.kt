@@ -55,7 +55,7 @@ object PNConfiguration {
     var iconSize = SimpleDoubleProperty(16.0)
 
     val highlightGlobal = SimpleListProperty(observableList("KEYWORD", "CLS"))
-    val highlightClass = SimpleListProperty(observableList("KEYWORD", "CLS", "TRANS", "PLACE", "METHOD", "SYNC", "PAREN", "BRACKET", "BRACE"))
+    val highlightClass = SimpleListProperty(observableList("KEYWORD", "CLS", "TRANS", "PLACE", "METHOD", "SYNC", "BRACE", "PAREN", "SYMBOL"))
     val highlightShadow = DropShadow()
 
     fun changeGrpcAddress() {

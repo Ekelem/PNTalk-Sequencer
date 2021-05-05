@@ -106,6 +106,9 @@ class MainView : View("Petri net Sequencer") {
                     }
                     progressbar(simulator.completion) {
                         useMaxWidth = true
+                        minWidth = 40.0
+                        minHeight = 20.0
+                        prefHeight = 20.0
                     }
                     checkbox("Using Scenario", simulator.usingScenario) {
                         vboxConstraints {

@@ -32,12 +32,13 @@
     -fx-font-weight: bold;
 }
 
-.code-area .bracket {
-    -fx-fill: darkgreen;
-    -fx-font-weight: bold;
-}
 .code-area .brace {
     -fx-fill: teal;
+    -fx-font-weight: bold;
+}
+
+.code-area .symbol {
+    -fx-fill: firebrick;
     -fx-font-weight: bold;
 }
 
@@ -82,6 +83,12 @@
 .code-area .sync-highlight {
 	-fx-fill: red;
 	-rtfx-background-color: #d9fad7;
+}
+
+.code-area .symbol-highlight {
+    -fx-fill: firebrick;
+    -fx-font-weight: bold;
+    -rtfx-background-color: #d9fad7;
 }
 
 .code-area .paren-highlight {
